@@ -1,0 +1,718 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2e89c01c-a2ef-4805-8dc0-4aff4bcbd5ba" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/MODL$scratch_1.coverage" NAME="scratch_1 Coverage Results" MODIFIED="1540773593919" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
+    <SUITE FILE_PATH="coverage/MODL$scratch__3_.coverage" NAME="scratch (3) Coverage Results" MODIFIED="1539537851694" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
+    <SUITE FILE_PATH="coverage/MODL$scratch__1_.coverage" NAME="scratch (1) Coverage Results" MODIFIED="1544319747242" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
+    <SUITE FILE_PATH="coverage/MODL$CAN_Prod_Cons.coverage" NAME="CAN_Prod_Cons Coverage Results" MODIFIED="1542312464591" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MODL$MEX_Prod_Cons.coverage" NAME="MEX_Prod_Cons Coverage Results" MODIFIED="1542551555080" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MODL$OFSProd.coverage" NAME="OFSProd Coverage Results" MODIFIED="1538941054020" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MODL$Excel_IO__1_.coverage" NAME="Excel IO (1) Coverage Results" MODIFIED="1539709492160" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MODL$scratch_2.coverage" NAME="scratch_2 Coverage Results" MODIFIED="1540256464153" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
+    <SUITE FILE_PATH="coverage/MODL$AutoProd.coverage" NAME="AutoProd Coverage Results" MODIFIED="1540784093254" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MODL$USA_Prod_Cons.coverage" NAME="USA_Prod_Cons Coverage Results" MODIFIED="1542312184434" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MODL$Prod_Cons_Flow_Cap.coverage" NAME="Prod_Cons_Flow_Cap Coverage Results" MODIFIED="1544391906251" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MODL$ONSProd.coverage" NAME="ONSProd Coverage Results" MODIFIED="1538941046431" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MODL$scratch__2_.coverage" NAME="scratch (2) Coverage Results" MODIFIED="1538946977634" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MODL$Excel_IO.coverage" NAME="Excel IO Coverage Results" MODIFIED="1539538827386" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
+    <SUITE FILE_PATH="coverage/MODL$Lower48.coverage" NAME="Lower48 Coverage Results" MODIFIED="1539143839049" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MODL$Prod_Cons.coverage" NAME="Prod_Cons Coverage Results" MODIFIED="1544319213212" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MODL$USACANProdCons.coverage" NAME="USACANProdCons Coverage Results" MODIFIED="1540058310053" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MODL$scratch.coverage" NAME="scratch Coverage Results" MODIFIED="1542084764754" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-566268141">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="28" />
+          <entry key="project.open.time.10" value="1" />
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.open.time.6" value="6" />
+          <entry key="project.open.time.7" value="11" />
+          <entry key="project.open.time.8" value="7" />
+          <entry key="project.open.time.9" value="5" />
+          <entry key="project.opened" value="32" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="dummy" value="171" />
+          <entry key="py" value="80788" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="PLAIN_TEXT" value="171" />
+          <entry key="Python" value="78967" />
+          <entry key="Scratch" value="1821" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="csv" value="5" />
+          <entry key="py" value="122" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="PLAIN_TEXT" value="5" />
+          <entry key="Python" value="97" />
+          <entry key="Scratch" value="25" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="MODL" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Arrays.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2360">
+              <caret line="124" column="19" selection-start-line="124" selection-start-column="19" selection-end-line="124" selection-end-column="19" />
+              <folding>
+                <marker date="1544391493180" expanded="true" signature="12117:12118" ph="..." />
+                <marker date="1544391493180" expanded="true" signature="12117:12260" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PIP_CAP_Functions.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1748">
+              <caret line="174" column="77" selection-start-line="174" selection-start-column="77" selection-end-line="174" selection-end-column="77" />
+              <folding>
+                <marker date="1544379532388" expanded="true" signature="4852:6281" ph="..." />
+                <marker date="1544379532388" expanded="true" signature="8622:8623" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CAN_Functions.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-4536">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
+              <folding>
+                <marker date="1544320172078" expanded="true" signature="17005:17010" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MEX_Functions.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-660">
+              <caret line="109" column="64" selection-start-line="109" selection-start-column="64" selection-end-line="109" selection-end-column="64" />
+              <folding>
+                <marker date="1544376304520" expanded="true" signature="2685:2957" ph="..." />
+                <marker date="1544376304520" expanded="true" signature="8448:8453" ph="..." />
+                <marker date="1544376304520" expanded="true" signature="9106:9111" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/USA_Functions.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2207">
+              <caret line="170" column="64" selection-start-line="170" selection-start-column="64" selection-end-line="170" selection-end-column="64" />
+              <folding>
+                <marker date="1544390911451" expanded="true" signature="4036:4041" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ROW_Functions.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="96" column="49" selection-start-line="96" selection-start-column="49" selection-end-line="96" selection-end-column="49" />
+              <folding>
+                <marker date="1544385667449" expanded="true" signature="3345:3350" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Functions.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2037">
+              <caret line="139" selection-start-line="139" selection-end-line="139" />
+              <folding>
+                <element signature="e#478#497#0" expanded="true" />
+                <marker date="1544391901271" expanded="true" signature="1415:1416" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Prod_Cons_Flow_Cap.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1972">
+              <caret line="116" column="13" selection-start-line="116" selection-start-column="13" selection-end-line="116" selection-end-column="13" />
+              <folding>
+                <element signature="e#647#656#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>can_cons_price</find>
+      <find>can_prod_raw</find>
+      <find>regions_dict</find>
+      <find>mex_cons_price_Raw</find>
+      <find>a.</find>
+      <find>write_d</find>
+      <find>include</find>
+      <find>mex_prod</find>
+      <find>mex_cons</find>
+      <find>years</find>
+      <find>mex_regions_acronyms</find>
+      <find>produ</find>
+      <find>index</find>
+      <find>usa_prod_stats_Acrony</find>
+      <find>usa_prod_stats</find>
+      <find>usa_prod_stat</find>
+      <find>usaoutput</find>
+      <find>mex_cons_price_d</find>
+      <find>dcu</find>
+      <find>enumerat</find>
+      <find>mex_regions</find>
+      <find>-1</find>
+      <find>mex_regions_full</find>
+      <find>pip_flow</find>
+      <find>Ar.pip_flow</find>
+      <find>mex</find>
+      <find>ar.</find>
+      <find>prod_stat</find>
+      <find>'production</find>
+      <find>_prod</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>f_usa_ofs_xls</replace>
+      <replace>f_usa_prod</replace>
+      <replace>usa_prod_raw</replace>
+      <replace>usa_prod_table</replace>
+      <replace>usa_prod</replace>
+      <replace>usa_ons_raw</replace>
+      <replace>usa_ons_rawcopy</replace>
+      <replace>usa_ofs_raw</replace>
+      <replace>usa_ofs_rawcopy</replace>
+      <replace>can_prod_raw</replace>
+      <replace>can_prod</replace>
+      <replace>can_cons</replace>
+      <replace>price_dict</replace>
+      <replace>usa_prod_stats_full</replace>
+      <replace>a.usa_cons_sectors</replace>
+      <replace>a.nangam_dict</replace>
+      <replace>a.nems_dict</replace>
+      <replace>cons_sectors</replace>
+      <replace>f.include</replace>
+      <replace>a.canadian_regions_acronyms</replace>
+      <replace>a.can_cons</replace>
+      <replace>a.provinces_to_regions</replace>
+      <replace>can_regions_dict</replace>
+      <replace>a.mex_regions_acronyms</replace>
+      <replace>-99999</replace>
+      <replace>cons_sector</replace>
+      <replace>'Consumption</replace>
+      <replace>_cons</replace>
+    </replaceStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Lower48.py" />
+        <option value="$PROJECT_DIR$/ONSProd.py" />
+        <option value="$PROJECT_DIR$/OFSProd.py" />
+        <option value="$PROJECT_DIR$/Excel IO.py" />
+        <option value="$PROJECT_DIR$/USProd.py" />
+        <option value="$PROJECT_DIR$/scratch_3.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_2.py" />
+        <option value="$PROJECT_DIR$/USACANProdCons.py" />
+        <option value="$PROJECT_DIR$/AutoProd.py" />
+        <option value="$PROJECT_DIR$/../MODL Archive/USACANProdCons.py" />
+        <option value="$PROJECT_DIR$/scratch.py" />
+        <option value="$PROJECT_DIR$/USA_Prod_Cons.py" />
+        <option value="$PROJECT_DIR$/CAN_Prod_Cons.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_1.py" />
+        <option value="$USER_HOME$/OneDrive - Johns Hopkins University/JHU Documents/Career/Civil Engineering/MODL New/MEX_Functions.py" />
+        <option value="$PROJECT_DIR$/MEX_Prod_Cons.py" />
+        <option value="$PROJECT_DIR$/Prod_Cons.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
+        <option value="$PROJECT_DIR$/CAN_Functions.py" />
+        <option value="$PROJECT_DIR$/MEX_Functions.py" />
+        <option value="$PROJECT_DIR$/PIP_CAP_Functions.py" />
+        <option value="$PROJECT_DIR$/ROW_Functions.py" />
+        <option value="$PROJECT_DIR$/USA_Functions.py" />
+        <option value="$PROJECT_DIR$/Arrays.py" />
+        <option value="$PROJECT_DIR$/Functions.py" />
+        <option value="$PROJECT_DIR$/Prod_Cons_Flow_Cap.py" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="470" />
+    <option name="y" value="-13" />
+    <option name="width" value="980" />
+    <option name="height" value="1040" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="MODL" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MODL" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MODL" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MODL" type="462c0819:PsiDirectoryNode" />
+              <item name="Include" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MODL" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
+            </path>
+            <path>
+              <item name="MODL" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
+              <item name="Scratches" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/!Daniel/Programs/Pycharm/MODL/Functions.py" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\!Daniel\Programs\Pycharm\MODL" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.Prod_Cons_Flow_Cap">
+    <configuration name="CAN_Prod_Cons" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="MODL" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CAN_Prod_Cons.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="MEX_Prod_Cons" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="MODL" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MEX_Prod_Cons.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Prod_Cons" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="MODL" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="C:\!Daniel\Programs\Pycharm\MODL\Prod_Cons_Flow_Cap.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Prod_Cons_Flow_Cap" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="MODL" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Prod_Cons_Flow_Cap.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="scratch (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="MODL" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$APPLICATION_CONFIG_DIR$/scratches" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.CAN_Prod_Cons" />
+      <item itemvalue="Python.MEX_Prod_Cons" />
+      <item itemvalue="Python.scratch (1)" />
+      <item itemvalue="Python.Prod_Cons" />
+      <item itemvalue="Python.Prod_Cons_Flow_Cap" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.Prod_Cons_Flow_Cap" />
+        <item itemvalue="Python.scratch (1)" />
+        <item itemvalue="Python.Prod_Cons" />
+        <item itemvalue="Python.MEX_Prod_Cons" />
+        <item itemvalue="Python.CAN_Prod_Cons" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="StructureViewFactory">
+    <option name="ACTIVE_ACTIONS" value=",SHOW_FIELDS" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2e89c01c-a2ef-4805-8dc0-4aff4bcbd5ba" name="Default Changelist" comment="" />
+      <created>1538832219042</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1538832219042</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.80942625" visible="true" weight="0.032885905" />
+      <window_info id="Structure" order="1" sideWeight="0.19057377" side_tool="true" weight="0.024832215" />
+      <window_info id="Favorites" order="2" sideWeight="0.501182" side_tool="true" weight="0.07315436" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32765958" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49597314" weight="0.32907802" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39885223" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49932885" weight="0.32907802" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50402683" side_tool="true" visible="true" weight="0.3248227" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49932885" weight="0.32907802" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32907802" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.3295302" />
+      <window_info anchor="right" id="Database" order="4" weight="0.3295302" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.80942625" visible="true" weight="0.024832215" />
+      <window_info id="Structure" order="1" sideWeight="0.19057377" side_tool="true" weight="0.024832215" />
+      <window_info id="Favorites" order="2" sideWeight="0.501182" side_tool="true" weight="0.07315436" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32855093" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" weight="0.30780143" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50067115" side_tool="true" weight="0.37021276" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32907802" />
+      <window_info anchor="bottom" id="Python Console" order="12" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.3295302" />
+      <window_info anchor="right" id="Database" order="4" weight="0.3295302" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/persons.csv" />
+    <entry file="file://$PROJECT_DIR$/Production.csv" />
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/File Download IO.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Lower_48_Natural_Gas_Production_and_Supply_Prices_by_Supply_Region.csv" />
+    <entry file="file://$PROJECT_DIR$/ONSProd.py" />
+    <entry file="file://$PROJECT_DIR$/OFSProd.py" />
+    <entry file="file://$PROJECT_DIR$/Lower48.py" />
+    <entry file="file://$PROJECT_DIR$/Lib/site-packages/pandas/core/frame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="346" column="24" lean-forward="true" selection-start-line="346" selection-start-column="24" selection-end-line="346" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_2.py" />
+    <entry file="file://$PROJECT_DIR$/../MODL Old/Lower48.py" />
+    <entry file="file://$PROJECT_DIR$/../MODL Old/OFSProd.py" />
+    <entry file="file://$PROJECT_DIR$/../MODL Old/ONSProd.py" />
+    <entry file="file://$PROJECT_DIR$/AutoCons.py" />
+    <entry file="file://$PROJECT_DIR$/USACANProdCons.py" />
+    <entry file="file://$PROJECT_DIR$/scratch_1.py" />
+    <entry file="file://$PROJECT_DIR$/../MODL Archive/USACANProdCons.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3706">
+          <caret line="313" column="23" selection-start-line="313" selection-start-column="23" selection-end-line="313" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scratch.py" />
+    <entry file="file://$PROJECT_DIR$/CAN_Prod_Cons.py" />
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="15" lean-forward="true" selection-start-column="15" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/USA_Prod_Cons.py" />
+    <entry file="file://$PROJECT_DIR$/CAN_Prod_Cons - Copy.py" />
+    <entry file="file://$PROJECT_DIR$/MEX_Prod_Cons - Copy.py" />
+    <entry file="file://$USER_HOME$/OneDrive - Johns Hopkins University/JHU Documents/Career/Civil Engineering/MODL New/MEX_Functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="54" lean-forward="true" selection-end-line="224" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MEX_Prod_Cons.py" />
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="7" lean-forward="true" selection-start-column="7" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PIP_CAP_Functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1748">
+          <caret line="174" column="77" selection-start-line="174" selection-start-column="77" selection-end-line="174" selection-end-column="77" />
+          <folding>
+            <marker date="1544379532388" expanded="true" signature="4852:6281" ph="..." />
+            <marker date="1544379532388" expanded="true" signature="8622:8623" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Arrays.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2360">
+          <caret line="124" column="19" selection-start-line="124" selection-start-column="19" selection-end-line="124" selection-end-column="19" />
+          <folding>
+            <marker date="1544391493180" expanded="true" signature="12117:12118" ph="..." />
+            <marker date="1544391493180" expanded="true" signature="12117:12260" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CAN_Functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4536">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <marker date="1544320172078" expanded="true" signature="17005:17010" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MEX_Functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-660">
+          <caret line="109" column="64" selection-start-line="109" selection-start-column="64" selection-end-line="109" selection-end-column="64" />
+          <folding>
+            <marker date="1544376304520" expanded="true" signature="2685:2957" ph="..." />
+            <marker date="1544376304520" expanded="true" signature="8448:8453" ph="..." />
+            <marker date="1544376304520" expanded="true" signature="9106:9111" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/USA_Functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2207">
+          <caret line="170" column="64" selection-start-line="170" selection-start-column="64" selection-end-line="170" selection-end-column="64" />
+          <folding>
+            <marker date="1544390911451" expanded="true" signature="4036:4041" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ROW_Functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="96" column="49" selection-start-line="96" selection-start-column="49" selection-end-line="96" selection-end-column="49" />
+          <folding>
+            <marker date="1544385667449" expanded="true" signature="3345:3350" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2037">
+          <caret line="139" selection-start-line="139" selection-end-line="139" />
+          <folding>
+            <element signature="e#478#497#0" expanded="true" />
+            <marker date="1544391901271" expanded="true" signature="1415:1416" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Prod_Cons_Flow_Cap.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1972">
+          <caret line="116" column="13" selection-start-line="116" selection-start-column="13" selection-end-line="116" selection-end-column="13" />
+          <folding>
+            <element signature="e#647#656#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
