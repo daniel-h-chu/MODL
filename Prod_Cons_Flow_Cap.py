@@ -131,5 +131,5 @@ writer.save()
 print('Completed Writing XLSX')
 print('File Opening...')
 # Start Up Files #######################################################################################################
-file = os.path.join(Fx.directory, 'Include/All/Output.xlsx')
+file = os.path.join(Fx.include('Output.xlsx'))
 os.startfile(file)

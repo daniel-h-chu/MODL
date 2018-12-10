@@ -4,8 +4,14 @@
 ########################################################################################################################
 # Import Statements
 import pandas as pd
-import os
 import Arrays as Ar
+import os
+import sys
+
+config_name = 'myapp.cfg'
+
+# determine if application is a script file or frozen exe
+
 ########################################################################################################################
 # Absolute Path of program for file reference functions
 directory = os.path.dirname(__file__)
@@ -14,7 +20,10 @@ directory = os.path.dirname(__file__)
 
 # Returns the absolute file path of an excel or csv file given the name of the file
 def include(name):
-    return os.path.join(directory, "Include/All/" + name)
+    if os.path.join(os.path.dirname(os.path.realpath(sys.argv[0])))[-4:] == 'dist':
+        return os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(sys.argv[0])))) +
+                            "/Include/All/" + name)
+    return os.path.join(os.path.dirname(os.path.realpath(sys.argv[0])) + "/Include/All/" + name)
 
 
 # Converts an xlsx file to a csv file given a sheet name
