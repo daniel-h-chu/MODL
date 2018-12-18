@@ -2,7 +2,6 @@
 ########################################################################################################################
 ########################################################################################################################
 ########################################################################################################################
-import os
 import csv
 import Functions as Fx
 import Arrays as Ar
@@ -20,12 +19,14 @@ import Arrays as Ar
 def prod_1():
     f_mex_csv = open(Fx.include('reg_bal_mex.csv'), 'r')
     file_reader = csv.reader(f_mex_csv, delimiter=',')
+    # What region we are dealing with
     mex_prod_region_temp = ''
     year_shift = 0
     for row in file_reader:
         if row[0] in Ar.mex_regions_acronyms:
             mex_prod_region_temp = row[0]
         if Fx.year_sh(row, ''):
+            # Read in correct data based on year
             year_shift = Fx.year_sh(row, '')
         if mex_prod_region_temp != '' and row[0] == Ar.production:
             for index, element in enumerate(row):
@@ -62,6 +63,7 @@ def prod_price_1():
     year_shift = 0
     for row in file_reader:
         if Fx.year_sh(row, ''):
+            # Read in correct data based on year
             year_shift = Fx.year_sh(row, '')
         # SPECIAL STATISTIC FOR MEXICAN PRICE
         if row[0] == "From Mexico":
@@ -100,25 +102,24 @@ def prod_price_2():
 def cons_1():
     f_mex_csv = open(Fx.include('reg_bal_mex.csv'), 'r')
     file_reader = csv.reader(f_mex_csv, delimiter=',')
+    # What Mexican Region we are dealing with
     mex_cons_region_temp = ''
     year_shift = 0
     for row in file_reader:
         if row[0] in Ar.mex_regions_acronyms:
             mex_cons_region_temp = row[0]
         if Fx.year_sh(row, ''):
+            # Read in correct data based on year
             year_shift = Fx.year_sh(row, '')
-        if mex_cons_region_temp != '' and row[0] in Ar.mex_cons_sectors:
+        if mex_cons_region_temp != '' and row[0] in Ar.cons_sectors:
             for index, element in enumerate(row):
                 if index+Ar.years[0]-year_shift in Ar.years:
                     try:
-                        Ar.mex_cons[Ar.mex_cons_dict[row[0]]][mex_cons_region_temp][index + Ar.years[0] - year_shift] =\
-                            float(element)
+                        Ar.mex_cons[row[0]][mex_cons_region_temp][index + Ar.years[0] - year_shift] = float(element)
                     except TypeError:
-                        Ar.mex_cons[Ar.mex_cons_dict[row[0]]][mex_cons_region_temp][index + Ar.years[0] - year_shift] =\
-                            0
+                        Ar.mex_cons[row[0]][mex_cons_region_temp][index + Ar.years[0] - year_shift] = 0
                     except ValueError:
-                        Ar.mex_cons[Ar.mex_cons_dict[row[0]]][mex_cons_region_temp][index + Ar.years[0] - year_shift] =\
-                            0
+                        Ar.mex_cons[row[0]][mex_cons_region_temp][index + Ar.years[0] - year_shift] = 0
     f_mex_csv.close()
 
 

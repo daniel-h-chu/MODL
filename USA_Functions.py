@@ -21,44 +21,53 @@ import Arrays as Ar
 def prod_1():
     f_usa_prod_csv = open(Fx.include('Lower_48_Natural_Gas_Production_and_Supply_Prices_by_Supply_Region.csv'), 'r')
     file_reader = csv.reader(f_usa_prod_csv, delimiter=',')
+    # Whether we are dealing with onshore or offshore
     prod_stat_temp = ''
     year_shift = 0
     # Enter data into dictionary by statistic, region, then year
     for row in file_reader:
         if Fx.year_sh(row, ''):
+            # Read in correct data based on year
             year_shift = Fx.year_sh(row, '')
         if row[0] in Ar.nems_regions_full and prod_stat_temp != '':
             for index, element in enumerate(row):
+                # Fill usa_prod_raw with production data for NEMS regions for correct years
                 if index + Ar.years[0] - year_shift in Ar.years:
                     Ar.usa_prod_raw[prod_stat_temp][Ar.nems_dict[row[0]]][index + Ar.years[0] - year_shift] = \
                         float(element)
-        elif row[0] in Ar.usa_prod_stats_full:
-            prod_stat_temp = Ar.stat_dict[row[0]]
+        # Whether we are dealing with onshroe or offshore
+        elif row[0] in Ar.prod_stats_acronyms:
+            prod_stat_temp = row[0]
+        # Stop reading data past this point (Production Price data after this point)
         elif row[0] == Ar.usa_prod_split:
             prod_stat_temp = ''
     f_usa_prod_csv.close()
 
 
 ########################################################################################################################
-# Gathers data for alaska and hawaii Production from Oil_and_Gas_Supply.csv
+# Gathers data for ALASKA and HAWAII Production from Oil_and_Gas_Supply.csv
 # usa_prod_raw stores raw US Production data in a dictionary
 # prod_stat_temp keeps track of the current statistic for which data is being entered into
 # year_shift tracks of where the list of years begins in the data file
 def prod_2():
     f_usa_prod_ahw_csv = open(Fx.include('Oil_and_Gas_Supply.csv'), 'r')
     file_reader = csv.reader(f_usa_prod_ahw_csv, delimiter=',')
+    # Whether we are dealing with onshore or offshore
     prod_stat_temp = ''
     year_shift = 0
     for row in file_reader:
         if Fx.year_sh(row, ''):
+            # Read in correct data based on year
             year_shift = Fx.year_sh(row, '')
         if row[0] in Ar.nems_regions_full and prod_stat_temp != '':
             for index, element in enumerate(row):
                 for stat in Ar.prod_stats_acronyms:  # Alaska only has offshore data, so it is used in both ofs and ons
+                    # Fill usa_prod_raw AHW with production data for NEMS regions for correct years
                     if index + Ar.years[0] - year_shift in Ar.years:
                         Ar.usa_prod_raw[stat][Ar.nems_dict[row[0]]][index + Ar.years[0] - year_shift] = float(element)
-        elif row[0] in Ar.usa_prod_stats_full:
-            prod_stat_temp = Ar.stat_dict[row[0]]
+        # Whether we are dealing with onshore or offshore
+        elif row[0] in Ar.prod_stats_acronyms:
+            prod_stat_temp = row[0]
     f_usa_prod_ahw_csv.close()
 
 
@@ -68,10 +77,12 @@ def prod_2():
 def prod_3():
     # NO TOTAL CSV FILE
     for stat in [stat for stat in Ar.prod_stats_acronyms if stat != 'Total']:
+        # read from NEMS_TO_NANGAM_OFFSHORE and NEMS_TO_NANGAM_ONSHORE
         f_nem_to_nan_csv = open(Fx.include('NEMS_TO_NANGAM_' + stat + '.csv'), 'r')
         file_reader = csv.reader(f_nem_to_nan_csv, delimiter=',')
         for row in file_reader:
             if row[1] in Ar.nangam_regions_acronyms:
+                # Fill nem_to_nan matrix with conversion ratios between NEMS and NANGAM Regions
                 for element, nems_region in zip(row[3:], Ar.nems_regions_acronyms):
                     Ar.nem_to_nan[stat][row[1]][nems_region] = float(element)
         f_nem_to_nan_csv.close()
@@ -90,6 +101,7 @@ def prod_4():
         for nangam_region in Ar.nangam_regions_acronyms:
             for index, year in enumerate(Ar.years):
                 dotsum = 0
+                # Transform NEMS data with a NEMS to NANGAM Conversion Matrix (Matrix Multiplication)
                 for nems_region, nems_conversion in zip(Ar.usa_prod_raw[stat], Ar.nem_to_nan[stat][nangam_region]):
                     dotsum += Ar.usa_prod_raw[stat][nems_region][year] * \
                               Ar.nem_to_nan[stat][nangam_region][nems_conversion]
@@ -119,16 +131,23 @@ def prod_price_1():
     f_usa_prod_price_csv = open(Fx.include('Lower_48_Natural_Gas_Production_and_Supply_Prices_by_Supply_Region.csv'),
                                 'r')
     file_reader = csv.reader(f_usa_prod_price_csv, delimiter=',')
+    # Whether we are dealing with onshore or offshore
     prod_stat_temp = ''
+    prod_temp = ''
     # Enter data into dictionary by statistic, region, then year
     for row in file_reader:
-        if row[0] in Ar.nems_regions_full and prod_stat_temp != '':
+        if row[0] in Ar.nems_regions_full and prod_stat_temp != '' and prod_temp != '':
             Ar.usa_prod_price_raw[prod_stat_temp][Ar.nems_dict[row[0]]] = dict.fromkeys(Ar.years)
             for index, element in enumerate(row[4:-1]):
                 if index+2015 in Ar.years:
+                    # Fill raw price data for each nems region for specific years
                     Ar.usa_prod_price_raw[prod_stat_temp][Ar.nems_dict[row[0]]][index + 2015] = float(element)
-        elif row[0] in Ar.usa_prod_price_stats:
-            prod_stat_temp = Ar.stat_price_dict[row[0]]
+        # Production Statistic is Onshore or Offshore
+        elif row[0] in Ar.prod_stats_acronyms:
+            prod_stat_temp = row[0]
+        # Make sure we are looking at price not just production
+        elif row[0] == Ar.usa_prod_split:
+            prod_temp = row[0]
     f_usa_prod_price_csv.close()
 
 
@@ -139,6 +158,7 @@ def prod_price_2():
     for stat in Ar.prod_stats_acronyms:
         for region in Ar.nems_regions_acronyms:
             for year in Ar.years:
+                # Numerical multiplication for production price value for each nems region and year
                 Ar.usa_prod_price_value[stat][region][year] = Ar.usa_prod_raw[stat][region][year] * \
                                                               Ar.usa_prod_price_raw[stat][region][year]
 
@@ -150,10 +170,12 @@ def prod_price_3():
         for nangam_region in Ar.nangam_regions_acronyms:
             for index, year in enumerate(Ar.years):
                 dotsum = 0
+                # Matrix multiply nems prices with nem_to_nangam transform matrix to obtain final prices usa_prod_price
                 for nems_region, nems_conversion in zip(Ar.usa_prod_price_value[stat],
                                                         Ar.nem_to_nan[stat][nangam_region]):
                     dotsum += Ar.usa_prod_price_value[stat][nems_region][year] * \
                               Ar.nem_to_nan[stat][nangam_region][nems_conversion]
+                # No Price Data
                 if Ar.usa_prod[stat][nangam_region][year] == 0:
                     Ar.usa_prod_price[stat][nangam_region][year] = 0
                 else:
@@ -167,10 +189,12 @@ def prod_price_4():
     for region in Ar.nangam_regions_acronyms:
         for year in Ar.years:
             try:
+                # Average production price weighted by production
                 Ar.usa_prod_price["Total"][region][year] = sum([Ar.usa_prod_price[stat][region][year] for stat in
                                                                 Ar.prod_stats_acronyms if stat != "Total"]) / sum(
-                [1 for stat
-                 in Ar.prod_stats_acronyms if Ar.usa_prod_price[stat][region][year] != 0 and stat != "Total"])
+                 [1 for stat
+                  in Ar.prod_stats_acronyms if Ar.usa_prod_price[stat][region][year] != 0 and stat != "Total"])
+            # No production data
             except ZeroDivisionError:
                 Ar.usa_prod_price["Total"][region][year] = 0
 
@@ -188,16 +212,20 @@ def prod_price_4():
 def cons_1():
     f_usa_cons_csv = open(Fx.include('Natural_Gas_Consumption_by_End-Use_Sector_and_Census_Division.csv'), 'r')
     file_reader = csv.reader(f_usa_cons_csv, delimiter=',')
+    # What current consumption sector we are dealing with
     cons_sector_temp = ''
     year_shift = 0
     for row in file_reader:
         if Fx.year_sh(row, ''):
+            # Read in correct data based on year
             year_shift = Fx.year_sh(row, '')
         if row[0] in Ar.cons_sectors:
+            # Set current consumption sector
             cons_sector_temp = row[0]
         if cons_sector_temp != '' and row[0] in Ar.nangam_regions_full:
             for index, element in enumerate(row):
                 if index + Ar.years[0] - year_shift in Ar.years:
+                    # Fill usa_cons with consumption data for each nangam region and year
                     Ar.usa_cons[cons_sector_temp][Ar.nangam_dict[row[0]]][index + Ar.years[0] - year_shift] = \
                         float(element)
     f_usa_cons_csv.close()
@@ -213,23 +241,29 @@ def cons_2():
         Ar.usa_cons[sector]["AHW"][Ar.years[0]] = element / 1000000
     f_usa_cons_total_csv = open(Fx.include('Energy_Consumption_by_Sector_and_Source.csv'), 'r')
     file_reader = csv.reader(f_usa_cons_total_csv, delimiter=',')
+    # What current consumption sector we are dealing with
     cons_sector_temp = ''
     year_shift = 0
     for row in file_reader:
         if Fx.year_sh(row, ''):
+            # Read in correct data based on year
             year_shift = Fx.year_sh(row, '')
         if row[0] in Ar.cons_sectors:
+            # Set the current consumption sector only if it reads residential
             cons_sector_temp = ''
         if row[0] == 'Residential':
             cons_sector_temp = row[0]
         if cons_sector_temp != '' and row[0] == Ar.resource:
             for index, element in enumerate(row):
                 if index + Ar.years[0] - year_shift in Ar.years:
+                    # Obtain total consumption for US residential sector for each year
                     Ar.usa_cons_total[index + Ar.years[0] - year_shift] = float(element)
     f_usa_cons_total_csv.close()
     for cons_sector in Ar.cons_sectors:
         for index, year in enumerate(Ar.years):
             if index > 0:
+                # Calculate Alaska consumption by calculating the ratio for Alaska consumption (by subtracting out every
+                # other region from us total) from one year to the next, then multiplying the ratio to the first year
                 Ar.usa_cons[cons_sector]['AHW'][year] = Ar.usa_cons[cons_sector]['AHW'][Ar.years[index - 1]] * \
                                                         (Ar.usa_cons_total[year] -
                                                          sum([Ar.usa_cons[cons_sector][nangam_region][year] for
@@ -257,16 +291,21 @@ def cons_price_1():
     f_usa_cons_price_csv = open(Fx.include('Natural_Gas_Delivered_Prices_by_End-Use_Sector_and_Census_Division.csv'),
                                 'r')
     file_reader = csv.reader(f_usa_cons_price_csv, delimiter=',')
+    # What current consumption sector we are dealing with
     cons_sector_temp = ''
     year_shift = 0
     for row in file_reader:
         if Fx.year_sh(row, ''):
+            # Read in correct data based on year
             year_shift = Fx.year_sh(row, '')
         if row[0] in Ar.cons_sectors:
+            # Set the current consumption sector
             cons_sector_temp = row[0]
         if cons_sector_temp != '' and row[0] in Ar.nangam_regions_full:
             for index, element in enumerate(row):
                 if index + Ar.years[0] - year_shift in Ar.years:
+                    # Fill usa_cons_price with consumption price data for each nangam region and year. Electric Power mu
+                    # st be converted by a factor of 1000/365
                     if cons_sector_temp != 'Electric Power':
                         Ar.usa_cons_price[cons_sector_temp][Ar.nangam_dict[row[0]]][index + Ar.years[0] - year_shift] =\
                             float(element)
@@ -284,6 +323,7 @@ def cons_price_2():
     for year in Ar.years:
         for element, sector in zip(Ar.usa_cons_price_als, Ar.cons_sectors):
             Ar.usa_cons_price[sector]["AHW"][year] = element
+            # Alaska all sector average price as average of other sectors weighted by consumption
             Ar.usa_cons_price['All Sectors']['AHW'][year] = sum([Ar.usa_cons[cons_sector]['AHW'][year] *
                                                                  Ar.usa_cons_price[cons_sector]['AHW'][year] for
                                                                  cons_sector in

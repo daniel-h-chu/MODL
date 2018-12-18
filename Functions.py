@@ -20,9 +20,11 @@ directory = os.path.dirname(__file__)
 
 # Returns the absolute file path of an excel or csv file given the name of the file
 def include(name):
+    # If program is run from commandline or executable
     if os.path.join(os.path.dirname(os.path.realpath(sys.argv[0])))[-4:] == 'dist':
         return os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(sys.argv[0])))) +
                             "/Include/All/" + name)
+    # If program is run using an IDE like Pycharm
     return os.path.join(os.path.dirname(os.path.realpath(sys.argv[0])) + "/Include/All/" + name)
 
 
@@ -42,18 +44,24 @@ def year_sh(row, char):
                 element_float = float(element)
             except ValueError:
                 element_float = 0
+            # If the year is equal to the first year in years then will return how much the year is shifted from the zer
+            # oeth column
             if Ar.years[0] == element_float:
                 return index
         return 0
 
 
+# Aggregate all Produciton and Consumption Price among all Countries of the World by summing correct dictionaries of
+# data for each country and then summing between multiple countries.
 def aggregate():
     for year in Ar.years:
+        # Create all_dict with all aggregate data (all_dict[Statistic][Country][Year][Sector])
         for country in ['Mexico', 'Canada', 'USA', 'ROW', 'Total']:
             Ar.all_dict['Production'][country][year] = dict.fromkeys(Ar.prod_stats_acronyms)
             Ar.all_dict['Production Price'][country][year] = dict.fromkeys(Ar.prod_stats_acronyms)
             Ar.all_dict['Consumption'][country][year] = dict.fromkeys(Ar.cons_sectors)
             Ar.all_dict['Consumption Price'][country][year] = dict.fromkeys(Ar.cons_sectors)
+        # Aggregate Production
         for prod_stat in Ar.prod_stats_acronyms:
             Ar.all_dict['Production']['Mexico'][year][prod_stat] = sum([Ar.mex_prod[prod_stat][region][year] for
                                                                         region in Ar.mex_regions_acronyms])
@@ -66,6 +74,7 @@ def aggregate():
             Ar.all_dict['Production']['Total'][year][prod_stat] = \
                 sum([Ar.all_dict['Production'][country][year][prod_stat]
                      for country in ['Mexico', 'Canada', 'USA', 'ROW']])
+        # Aggregate Production Price as an avearage of production price of individual regions weighted by production
         for prod_stat in Ar.prod_stats_acronyms:
             try:
                 Ar.all_dict['Production Price']['Mexico'][year][prod_stat] = \
@@ -99,6 +108,7 @@ def aggregate():
                     Ar.all_dict['Production']['Total'][year][prod_stat]
             except ZeroDivisionError:
                 Ar.all_dict['Production Price']['Total'][year][prod_stat] = 0
+        # Aggregate consumption
         for cons_sector in Ar.cons_sectors:
             Ar.all_dict['Consumption']['Mexico'][year][cons_sector] = sum([Ar.mex_cons[cons_sector][region][year] for
                                                                            region in Ar.mex_regions_acronyms])
@@ -111,6 +121,8 @@ def aggregate():
             Ar.all_dict['Consumption']['Total'][year][cons_sector] = \
                 sum([Ar.all_dict['Consumption'][country][year][cons_sector]
                      for country in ['Mexico', 'Canada', 'USA', 'ROW']])
+
+        # Aggregate Consumption Price as an avearage of consumption price of individual regions weighted by consumption
         for cons_sector in Ar.cons_sectors:
             try:
                 Ar.all_dict['Consumption Price']['Mexico'][year][cons_sector] = \
@@ -157,6 +169,7 @@ def aggregate():
 # sheet is the excel sheet to write in
 def write_all(writer, lines, usa_dict, can_dict, mex_dict, row_dict, iterable1, iterable3, sheet):
     dictionary = dict.fromkeys(iterable1)
+    # Create a production/consumption (price) dictionary that contains data for all countries' regions
     for key in iterable1:
         dictionary[key] = {}
         dictionary[key].update(mex_dict[key])
@@ -165,6 +178,7 @@ def write_all(writer, lines, usa_dict, can_dict, mex_dict, row_dict, iterable1, 
         dictionary[key].update(row_dict[key])
     iterable2 = Ar.all_regions_acronyms
     wb = writer.book
+    # Excel Formats
     f1 = wb.add_format({
         'italic': True,
         'border': 0})
@@ -177,11 +191,13 @@ def write_all(writer, lines, usa_dict, can_dict, mex_dict, row_dict, iterable1, 
     df = pd.DataFrame({})
     df.to_excel(writer, sheet_name=sheet)
     ws = writer.sheets[sheet]
+    # Write initial lines/comments about the excel sheet
     ws.write_column(0, 0, lines)
     for index, i1 in enumerate(iterable1):
         ws.write_column(len(lines) + index * (len(iterable2) + 15) + 1, 0, [Ar.print_full_dict[i2] for i2 in iterable2],
                         f1)
         ws.write_column(len(lines) + index * (len(iterable2) + 15) + 1, 1, ['DNG'] * len(iterable2))
+        # If production (4 columns of metadata)
         if iterable1 == Ar.prod_stats_acronyms:
             ws.write_row(len(lines) + index * (len(iterable2) + 15), 0, [Ar.print_dict[i1], '', '', ''] + iterable3, f2)
             ws.write_column(len(lines) + index * (len(iterable2) + 15) + 1, 2, [i1] * len(iterable2))
@@ -196,6 +212,7 @@ def write_all(writer, lines, usa_dict, can_dict, mex_dict, row_dict, iterable1, 
                              + [Ar.all_dict[sheet][country][year][i1] for year in Ar.years])
             ws.write_row(len(lines) + (1 + index) * (len(iterable2) + 15) - 7, 0, ['', 'DNG', 'Total', ''] +
                          [Ar.all_dict[sheet]['Total'][year][i1] for year in Ar.years])
+        # If consumption (3 Columns of metadata)
         else:
             ws.write_row(len(lines) + index * (len(iterable2) + 15), 0, [Ar.print_dict[i1], '', ''] + iterable3, f2)
             ws.write_column(len(lines) + index * (len(iterable2) + 15) + 1, 2, [i2 for i2 in iterable2], f3)
@@ -235,11 +252,13 @@ def write_cap(writer, lines, sheet):
     df.to_excel(writer, sheet_name=sheet)
     ws = writer.sheets[sheet]
     ws.write_column(0, 0, lines)
+    # Write metadata
     ws.write_column(len(lines), 0, [''] + [region_full for region_full in Ar.all_regions_full], f1)
     ws.write_column(len(lines), 1, [''] + [region_acronym for region_acronym in Ar.all_regions_acronyms], f2)
     ws.write_row(len(lines) - 1, 2, [region_full for region_full in Ar.all_regions_full], f1)
     ws.write_row(len(lines), 2, [region_acronym for region_acronym in Ar.all_regions_acronyms], f2)
     for index, region_acronym in enumerate(Ar.all_regions_acronyms):
+        # Write data by individual columns
         ws.write_column(1 + len(lines), index + 2, [Ar.pip_cap[region_acronym][region_acronym2] for region_acronym2 in
                                                     Ar.all_regions_acronyms])
 
@@ -267,6 +286,7 @@ def write_flow(writer, lines, sheet):
     for region_from in Ar.all_regions_acronyms:
         for region_to in Ar.all_regions_acronyms:
             if Ar.pip_flow[region_from][region_to][Ar.years[0]] != 0:
+                # Write metadata and data as rows
                 ws.write_row(index, 0, [Ar.print_full_dict[region_to], Ar.print_full_dict[region_from], 'Bcd/d'], f1)
                 ws.write_row(index, 3, [region_to, region_from], f2)
                 ws.write_row(index, 5, [Ar.pip_flow[region_from][region_to][year] for year in Ar.years])

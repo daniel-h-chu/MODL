@@ -13,7 +13,9 @@ import Arrays as Ar
 # US Pipe Capacity #####################################################################################################
 ########################################################################################################################
 ########################################################################################################################
-# US Pipe Capacity
+# Pipeline Capacity between US Regions with other US Regions, Mexican Regions, or Canadian Regions. Data is read from
+# EIA-StatetoStateCapacity.csv and only pipelines with the same year as the base year (Ar.years[0]) are selected. To and
+# from provinces/states/cities are sorted by country so that they can contribute to the correct region's data
 def pip_cap_1():
     f_usa_pip_cap = open(Fx.include('EIA-StatetoStateCapacity.csv'), 'r')
     file_reader = csv.reader(f_usa_pip_cap, delimiter=',')
@@ -33,7 +35,7 @@ def pip_cap_1():
                     pip_county_from_ind = index
                 if element == Ar.county_to and pip_county_to_ind == -99999:
                     pip_county_to_ind = index
-                if element == Ar.capacity_mmcfd and pip_capacity_ind == -99999:
+                if element == Ar.capacity and pip_capacity_ind == -99999:
                     pip_capacity_ind = index
         try:
             if float(row[0]) == Ar.years[0]:
@@ -76,7 +78,8 @@ def pip_cap_1():
 # Mexico Pipe Capacity #################################################################################################
 ########################################################################################################################
 ########################################################################################################################
-# Mexico Pipe Capacity
+# Pipeline capacity between Meixco regions from mex_pip_cap_bcfd.csv where to and from data is directly fed into the pip
+# eline capacity dictionary. Only operating pipes contribute to regional data
 def pip_cap_2():
     f_mex_pip_cap = open(Fx.include('mex_pip_cap_bcfd.csv'), 'r')
     file_reader = csv.reader(f_mex_pip_cap, delimiter=',')
@@ -91,7 +94,7 @@ def pip_cap_2():
                     pip_region_from_ind = index
                 if element == Ar.region_to and pip_region_to_ind == -99999:
                     pip_region_to_ind = index
-                if element == Ar.capacity_mex_bcfd and pip_capacity_ind == -99999:
+                if element == Ar.capacity and pip_capacity_ind == -99999:
                     pip_capacity_ind = index
                 if element == Ar.status and pip_status_ind == -99999:
                     pip_status_ind = index
@@ -113,7 +116,8 @@ def pip_cap_2():
 # Canada Pipe Capacity #################################################################################################
 ########################################################################################################################
 ########################################################################################################################
-# Canada Pipe Capacity
+# Pipeline capacity between Canada regions from can_pip_cap.csv where to and from data is directly fed into the pip
+# eline capacity dictionary. Only operating pipes contribute to regional data
 def pip_cap_3():
     f_can_pip_cap = open(Fx.include('can_pip_cap.csv'), 'r')
     file_reader = csv.reader(f_can_pip_cap, delimiter=',')
@@ -127,7 +131,7 @@ def pip_cap_3():
                     pip_region_from_ind = index
                 if element == Ar.region_to and pip_region_to_ind == -99999:
                     pip_region_to_ind = index
-                if element == Ar.capacity_can_bcfd and pip_capacity_ind == -99999:
+                if element == Ar.capacity and pip_capacity_ind == -99999:
                     pip_capacity_ind = index
         try:
             if row[pip_region_from_ind] in Ar.all_regions_acronyms and row[pip_region_to_ind] in \
@@ -154,7 +158,9 @@ def pip_cap_4():
 # US Pipe Flow #########################################################################################################
 ########################################################################################################################
 ########################################################################################################################
-# USA to USA Pipe Flow
+# USA to USA and USA to Canada Pipe Flow. Pipe flow is directly read from Primary_Natural_Gas_Flows_Entering_NGTDM_Regio
+# n_from_Neighboring_Regions.csv. If a flow goes through a region, then the flow is counted twice: once of the original
+# region to the intermediate region and once of the intermediate region to the final region (manually done)
 def pip_flow_1():
     f_usa_pip_flow = open(Fx.include('Primary_Natural_Gas_Flows_Entering_NGTDM_Region_from_Neighboring_Regions.csv'),
                           'r')
@@ -182,7 +188,9 @@ def pip_flow_1():
 # Mexico Pipe Flow #####################################################################################################
 ########################################################################################################################
 ########################################################################################################################
-# MEX and USA Pipe Flow
+# Pipeline flow from the United States to Mexico modeled off flow to each Meixcan region being proportional to capacity
+# to each Mexican region and flow from Mexico to US is modeled congruently. Total pipeline flow/exports are read from
+# reg_bal_mex.csv
 def pip_flow_2():
     f_mex_pip_flow = open(Fx.include('reg_bal_mex.csv'), 'r')
     file_reader = csv.reader(f_mex_pip_flow, delimiter=',')
@@ -234,7 +242,8 @@ def pip_flow_2():
 # Canada Pipe Flow #####################################################################################################
 ########################################################################################################################
 ########################################################################################################################
-# USA to CAN Pipe Flow
+# Pipeline flow from the United States to Canada modeled off flow to each Canadian region being proportional to capacity
+# to each Canadian region. Total pipeline flow/exports are read from Natural_Gas_Imports_and_Exports.csv
 def pip_flow_3():
     f_can_pip_flow = open(Fx.include('Natural_Gas_Imports_and_Exports.csv'), 'r')
     file_reader = csv.reader(f_can_pip_flow, delimiter=',')
@@ -257,7 +266,8 @@ def pip_flow_3():
 
 
 # CAN to CAN Pipe Flow #################################################################################################
-#
+# Pipeline flow between Canada regions from can_pip_cap.csv where to and from data is directly fed into the pipeline flo
+# dictionary. Only operating pipes contribute to regional data
 def pip_flow_4():
     f_can_pip_cap = open(Fx.include('can_pip_cap.csv'), 'r')
     file_reader = csv.reader(f_can_pip_cap, delimiter=',')

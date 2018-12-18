@@ -109,8 +109,6 @@ writer = pd.ExcelWriter(Fx.include('Output.xlsx'), engine='xlsxwriter')
 Fx.write_all(writer, ['Production', 'BCF/Day', str(Ar.years[0]) + ' to ' + str(Ar.years[-1]), '', '', '', ''],
              Ar.usa_prod, Ar.can_prod, Ar.mex_prod, Ar.row_prod, Ar.prod_stats_acronyms, Ar.years, 'Production')
 # Write all Production Price Data
-
-
 Fx.write_all(writer,
              ['Production Price', '$Million/BCF', str(Ar.years[0]) + ' to ' + str(Ar.years[-1]), '', '', '', ''],
              Ar.usa_prod_price, Ar.can_prod_price, Ar.mex_prod_price, Ar.row_prod_price, Ar.prod_stats_acronyms,

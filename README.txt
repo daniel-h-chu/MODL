@@ -9,8 +9,9 @@ and pandas to write to excels.
 
 IMPORTANT TO-DO:
 
-Download all excels and CSVs in 'Include/All Files'
-Edit fields in Arrays.py to change outputs and match information in 'Include/All FIles'
+Download all excels and CSVs in 'Include/Files to Download'
+Edit fields in Arrays.py to change outputs and match information in 'Include/Files to Downlo
+ad'
 
 STRUCTURE:
 
@@ -32,12 +33,18 @@ Arrays.py
       - All .py files inherit from this
       - Data from Excels and CSVs are stored in dictionaries here. Generally, nested diction
 	aries of the form dict_name[Producion Statistic/Consumption Sector][Region][Year] ar
-	e used to store the data. Only edit the sections outlined that can be edited.
+	e used to store the data. Nested dictionaries of the form dict_name[Region From][Reg
+	ion To][Year] are used for pipes. Only edit the sections outlined that can be edited
       - Metadata (Regions, Years, Sectors) are stored as 1D Arrays
+      - dict_name is usually (country)_(prod/cons)_([price])_([raw]), such as usa_prod_raw
+	for US raw production data or can_cons_price for CAN final consumption price data
       -	Lookup Dictionaries are nested dictionaries that return acronyms from full names and
 	vice versa.
       - Keywords are specific words within excel document that must be correctly supplied in
 	order for the program to read the correct data.
+      - For some field, I wrote (For 'FileName') beside a keyword or array. The keyword is
+	to help read data from FileName (Most likely the keyword can be found on the left co
+	lumns)
 
 Functions.py
       - General functions used throughout the program. This file inherits Arrays.py and is i

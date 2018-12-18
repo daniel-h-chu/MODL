@@ -20,6 +20,7 @@ import Arrays as Ar
 def prod_1():
     f_can_prod_csv = open(Fx.include('Natural_Gas_Production.csv'), 'r')
     file_reader = csv.reader(f_can_prod_csv, delimiter=',')
+    # What province we are dealing with
     can_prod_raw_province_temp = ''
     year_shift = 0
     for row in file_reader:
@@ -69,6 +70,7 @@ def prod_price_1():
     year_shift = 0
     for row in file_reader:
         if Fx.year_sh(row, ''):
+            # Read in correct data based on year
             year_shift = Fx.year_sh(row, '')
         # SPECIAL STATISTIC FOR CANADIAN PRICE
         if row[0] == "From Canada":
@@ -123,12 +125,14 @@ def cons_1():
 def cons_2():
     f_can_end_dem_csv = open(Fx.include('End_-_Use_Demand.csv'), 'r')
     file_reader = csv.reader(f_can_end_dem_csv, delimiter=',')
+    # What consumption sector we are dealing with
     cons_sector_temp = ''
     year_shift = 0
     for row in file_reader:
         if row[0] in Ar.cons_sectors:
             cons_sector_temp = row[0]
         if Fx.year_sh(row, '_'):
+            # Read in correct data based on year
             year_shift = Fx.year_sh(row, '_')
         if cons_sector_temp != '' and row[0] == Ar.resource:
             for index, element in enumerate(row):
@@ -148,6 +152,7 @@ def cons_2():
 def cons_3():
     f_can_eng_dem_csv = open(Fx.include('Primary_Energy_Demand.csv'), 'r')
     file_reader = csv.reader(f_can_eng_dem_csv, delimiter=',')
+    # What consumption sector we are dealing with
     cons_sector_temp = ''
     year_shift = 0
     for row in file_reader:
@@ -155,6 +160,7 @@ def cons_3():
         if row[0] == 'Electric Generation':
             cons_sector_temp = row[0]
         if Fx.year_sh(row, '_'):
+            # Read in correct data based on year
             year_shift = Fx.year_sh(row, '_')
         if cons_sector_temp != '' and row[0] == Ar.resource:
             for index, element in enumerate(row):
@@ -171,6 +177,7 @@ def cons_3():
 def cons_4():
     f_can_elc_gen_csv = open(Fx.include('Electricity_Generation.csv'), 'r')
     file_reader = csv.reader(f_can_elc_gen_csv, delimiter=',')
+    # What province we are dealing with
     can_cons_province_temp = ''
     year_shift = 0
     for row in file_reader:
@@ -233,6 +240,7 @@ def cons_price_1():
     year_shift = 0
     for row in file_reader:
         if Fx.year_sh(row, '_'):
+            # Read in correct data based on year
             year_shift = Fx.year_sh(row, '_')
         if row[0] == Ar.resource:
             for index, element in enumerate(row):

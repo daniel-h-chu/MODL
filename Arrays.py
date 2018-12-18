@@ -7,14 +7,15 @@
 # All (Things that can be changed) #####################################################################################
 ########################################################################################################################
 
-# Consumption Sectors
+# Consumption Sectors (To Be Read from Excel Sheets)
 cons_sectors = ['All Sectors', 'Residential', 'Commercial', 'Industrial', 'Transportation', 'Electric Power']
-# Acronyms of Production Stats
+# Acronyms of Production Stats (To Be Read from Excel Sheets)
 prod_stats_acronyms = ['ONS', 'OFS', 'Total']
-# Years to be calculated
+# Years to be calculated (Would recommend years[0] being 2015, 2016, or 2017)
 years = [year for year in range(2015, 2051)]
 
 # Custom Data ##########################################################################################################
+# See 'Files to Download' on how to enter data to these arrays
 
 # Alaska Consumption 2015 from NG_CONS_SUM_DCU_SAK_A (Same order as cons_sectors)
 usa_cons_als = [333602, 18574, 18472, 4864 + 223246 + 37615 + 615, 10, 30207]
@@ -26,18 +27,18 @@ mex_cons_price_raw = [0, 9.73, 5.34, 4.02, 9.73, 4.02]
 
 # US Geography #########################################################################################################
 
-# Full names of NEMS regions
+# Full names of NEMS regions (For Lower_48_Natural_Gas_Production_and_Supply_Prices_by_Supply_Region)
 nems_regions_full = ['East', 'Gulf Coast', 'Midcontinent', 'Southwest', 'Dakotas/Rocky Mountains', 'West Coast',
                      'Alaska']
-# Acronyms of NEMS regions (In same order as above)
+# Acronyms of NEMS regions (In same order as above) (For NEMS_TO_NANGAM_)
 nems_regions_acronyms = ['NES', 'NGC', 'NMC', 'NSW', 'NRM', 'NWC', 'NAH']
 # Full names of NANGAM regions
 nangam_regions_full = ['Alaska & Hawaii', 'Gulf of Mexico', 'Pacific', 'Mountain', 'West North Central',
                        'East North Central', 'West South Central', 'East South Central', 'Middle Atlantic',
                        'South Atlantic', 'New England']
-# Acronyms of NANGAM regions
+# Acronyms of NANGAM regions (For NEMS_TO_NANGAM_)
 nangam_regions_acronyms = ['AHW', 'GOM', 'PCF', 'MNT', 'WNC', 'ENC', 'WSC', 'ESC', 'MAT', 'SAT', 'NEN']
-# Full names of US States
+# Full names of US States (For EIA-StatetoStateCapacity)
 usa_states_full = ['Gulf of Mexico', 'Gulf of Mexico - Deepwater', 'Alabama', 'Alaska', 'Arizona', 'Arkansas',
                    'California', 'Colorado', 'Connecticut', 'Delaware', 'District of Columbia', 'Florida', 'Georgia',
                    'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa',  'Kansas', 'Kentucky', 'Louisiana', 'Maine',
@@ -46,12 +47,12 @@ usa_states_full = ['Gulf of Mexico', 'Gulf of Mexico - Deepwater', 'Alabama', 'A
                    'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina',
                    'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington',
                    'West Virginia', 'Wisconsin', 'Wyoming']
-# Acronyms of US States (In same order as above)
+# Acronyms of US States (In same order as above) (For EIA-StatetoStateCapacity)
 usa_states_acronyms = ['GOM', 'GMD', 'ALB', 'ALS', 'ARZ', 'ARK', 'CAL', 'COL', 'CON', 'DEL', 'WDC', 'FLR', 'GRG', 'HWI',
                        'IDH', 'ILN', 'IND', 'IOW', 'KNS', 'KNT', 'LSN', 'MAN', 'MAR', 'MAS', 'MCH', 'MNS', 'MSI', 'MSU',
                        'MON', 'NBR', 'NVD', 'NHM', 'NJS', 'NMX', 'NYK', 'NCL', 'NDK', 'OHO', 'OKL', 'ORG', 'PEN', 'RIL',
                        'SCL', 'SDK', 'TNS', 'TEX', 'UTH', 'VMT', 'VGN', 'WAS', 'WVG', 'WIS', 'WYO']
-# Acronyms of states per NANGAM region
+# Acronyms of states per NANGAM region (For EIA-StatetoStateCapacity in sorting states into respective NANGAM regions)
 states_to_regions = {
     'AHW': ['ALS', 'HWI'],
     'GOM': ['GOM', 'GMD'],
@@ -68,17 +69,19 @@ states_to_regions = {
 
 # Canada Geography #####################################################################################################
 
+# Full names of Canadian Provinces (For 1710000501-eng, Natural_Gas_Production, EIA-StatetoStateCapacity, and
+# Electricity_Generation )
 canadian_provinces_full = ['Newfoundland and Labrador', 'Prince Edward Island', 'Nova Scotia', 'New Brunswick',
                            'Quebec', 'Ontario', 'Manitoba', 'Alberta', 'British Columbia', 'Saskatchewan',
                            'Yukon', 'Northwest Territories', 'Nunavut']
-# Acronyms of Canadian Provinces (In same order as above)
+# Acronyms of Canadian Provinces (In same order as above) (For Printing)
 canadian_provinces_acronyms = ['NLL', 'PEI', 'NSC', 'NBW', 'QBC', 'ONT', 'MTB', 'ABR', 'BCL', 'SAS', 'YKN', 'NWT', 'NUN'
                                ]
-# Full names of Canadian regions
+# Full names of Canadian regions (For printing)
 canadian_regions_full = ['Canada East', 'Canada West']
-# Acronyms of Canadian regions
+# Acronyms of Canadian regions (For Printing)
 canadian_regions_acronyms = ['CAE', 'CAW']
-# Regions Defined by Provinces
+# Regions Defined by Provinces (For EIA-StatetoStateCapacity)
 provinces_to_regions = {
     'CAE': ['NLL', 'PEI', 'NSC', 'NBW', 'QBC', 'ONT'],
     'CAW': ['MTB', 'ABR', 'BCL', 'SAS', 'YKN', 'NWT', 'NUN']
@@ -86,12 +89,12 @@ provinces_to_regions = {
 
 # Mexico Geography #####################################################################################################
 
-# Full names of Mexican Regions
+# Full names of Mexican Regions (For reg_bal_mex)
 mex_regions_full = ['Mexico North West', 'Mexico North East', 'Mexico Interior West', 'Mexico Interior',
                     'Mexico South West']
-# Acronyms of Mexican Regions (In same order as above)
+# Acronyms of Mexican Regions (In same order as above) (For reg_bal_mex)
 mex_regions_acronyms = ['MNW', 'MNE', 'MIW', 'MIN', 'MSW']
-# Mexican cities per NANGAM region (For st2st)
+# Mexican cities per NANGAM region (For EIA-StatetoStateCapacity)
 cities_to_regions = {
     'MNW': ['Sonora', 'Chihuahua', 'Baja California', 'Baja Calif. Norte'],
     'MNE': ['Tamaulipas', 'Reynosa', 'Mexico', 'Coahuila'],
@@ -102,64 +105,48 @@ cities_to_regions = {
 
 # Rest of World Geography ##############################################################################################
 
-# Full names of Rest of World Regions
+# Full names of Rest of World Regions (For printing and aggregate data)
 row_regions_full = ['Rest of World']
-# Acronyms of Rest of World Regions
+# Acronyms of Rest of World Regions (For printing and aggregate data)
 row_regions_acronyms = ['ROW']
 
 ########################################################################################################################
 # All (Misc. Consult the Data before Changing) #########################################################################
 ########################################################################################################################
 
-# United States ########################################################################################################
-
-usa_prod_split = 'Supply Prices'  # Statistic Keyword for Price
-resource = "Natural Gas"  # Resource Keyword
-gasoline = "Gasoline"  # Gasoline Keyword
-
-# Full Names of US Production Stats Keywords (Same order as Production Stats)
-usa_prod_stats_full = ['Lower 48 Onshore', 'Lower 48 Offshore', 'Lower 48 Combined']
-# USA Production price stats to be calculated Keywords (Should be same as production stats)
-usa_prod_price_stats = ['Lower 48 Onshore Price', 'Lower 48 Offshore Price', 'Lower 48 Offshore Price Combined']
-
-# Canada ###############################################################################################################
-
-# US NANGAM regions used for consumption price calculations
+# US NANGAM regions used for Canadian Consumption price calculations (For Canadian Consumption)
 can_cons_nangam_regions = ['PCF', 'MNT', 'WNC', 'ENC', 'NEN']
+# Production Statistics to be Printed on Excel Sheet (For printing)
+prod_stats_print = ['Onshore', 'Offshore', 'Total']
+# Consumption Sectors to be Printed on Excel Sheet (For printing)
+cons_sectors_print = ['Total Consumption', 'Residential Sector', 'Commercial Sector', 'Industrial Sector',
+                      'Transportation Sector', 'Electric Sector']
 
-# Mexico ###############################################################################################################
+# Keywords #############################################################################################################
 
-production = "Production"  # Production Keyword
-
-# Consumption Sectors (Same order as Consumption Sectors)
-mex_cons_sectors = ['Consumption', 'Residential Sector', 'Commercial Sector', 'Industrial Sector',
-                    'Transportation Sector', 'Electric Sector']
-
-# Rest of World ########################################################################################################
-
-total_world = 'Total World'  # Total World Keyword
-united_states = 'United States'  # US Keyword
-canada = 'Canada'  # Canada Keyword
-mexico = 'Mexico'  # Mexico Keyword
-all_sectors = 'All Sectors'  # All Sectors Keyword
-
-# Piping Capacity ######################################################################################################
-
-region_from = 'Region From'  # Region From Keyword ()
-region_to = 'Region To'  # Region To Keyword
-state_from = 'State From'  # State From Keyword (For st2st)
-state_to = 'State To'  # State To Keyword (For st2st)
-county_from = 'County From'  # County From Keyword (For st2st Mexican Pipes)
-county_to = 'County To'  # County To Keyword (For st2st Mexican Pipes)
-capacity_mmcfd = 'Capacity (mmcfd)'  # Capacity MMCFD Keyword (For st2st Capacity)
-capacity_mex_bcfd = 'Average Volume MMCF/day)'  # Capacity MMCF Keyword (For mex_pip_cap_mmcfd)
-capacity_can_bcfd = 'Average annual Capacity (BCF/day)'  # Capacity BCFD Keyword (For can_pip_cap)
-capacity_year = 'year'  # Capacity Year Keyword (For st2st)
-operating = 'Operating'  # Operating Keyword (For mex_pip_cap_mmcfd)
-status = 'Status'  # Status Keyword (For mex_pip_cap_mmcfd)
-
-# Piping Flow ##########################################################################################################
-
+usa_prod_split = 'Supply Prices'  # Statistic Keyword for Price (For Lower_48_Natural_Gas_Production_and_Supply_Prices_)
+resource = "Natural Gas"  # Resource Keyword (For Energy_Consumption_by_Sector_and_Source, Delivered_energy_consumption_
+# by_end-use_sector_and_fuel, Primary_Energy_Demand, End_-_Use_Demand, End_-_Use_Prices, Electricity_Generation)
+production = "Production"  # Production Keyword (For reg_bal_mex)
+total_world = 'Total World'  # Total World Keyword (For World_total_natural_gas_production_by_region and World_natural_g
+# as_consumption_by_region)
+united_states = 'United States'  # US Keyword (For World_total_natural_gas_production_by_region and World_total_natural_
+# gas_consumption_by_region)
+canada = 'Canada'  # Canada Keyword (For World_total_natural_gas_production_by_region and World_total_natural_
+# gas_consumption_by_region)
+mexico = 'Mexico'  # Mexico Keyword (For World_total_natural_gas_production_by_region and World_total_natural_
+# gas_consumption_by_region)
+all_sectors = 'All Sectors'  # All Sectors Keyword (For Delivered_energy_consumption_by_end-use_sector_and_fuel)
+region_from = 'Region From'  # Region From Keyword (For mex_pip_cap_bcfd and can_pip_cap)
+region_to = 'Region To'  # Region To Keyword (For mex_pip_cap_bcfd and can_pip_cap)
+state_from = 'State From'  # State From Keyword (For EIA-StatetoStateCapacity)
+state_to = 'State To'  # State To Keyword (For EIA-StatetoStateCapacity)
+county_from = 'County From'  # County From Keyword (For EIA-StatetoStateCapacity)
+county_to = 'County To'  # County To Keyword (For EIA-StatetoStateCapacity)
+capacity = 'Capacity'  # Capacity Keyword (For EIA-StatetoStateCapacity, mex_pip_cap_bcfd, can_pip_cap)
+capacity_year = 'year'  # Capacity Year Keyword (For EIA-StatetoStateCapacity)
+operating = 'Operating'  # Operating Keyword (For mex_pip_cap_bcfd)
+status = 'Status'  # Status Keyword (For mex_pip_cap_bcfd)
 r_into = 'Into '  # Into Keyword (For Primary_Natural_Gas_Flows_Entering_NGTDM_Region_from_Neighboring_Regions)
 r_from = ' From:'  # From Keyword (For Primary_Natural_Gas_Flows_Entering_NGTDM_Region_from_Neighboring_Regions)
 usa_to_can = 'Pipeline Exports to Canada'  # USA to CAN Pipe Exports (For Natural_Gas_Imports_and_Exports)
@@ -167,16 +154,13 @@ can_to_can = 'Average annual flows (BCF/day)'  # CAN to CAN Pipe Flow (For can_p
 imports = 'Imports'  # MEX Imports Keyword (For reg_bal_mex)
 exports = 'Exports'  # MEX Exports Keyword (For reg_bal_mex)
 
-# Aggregate Printing ###################################################################################################
-
-prod_stats_print = ['Onshore', 'Offshore', 'Total']  # Production Statistics to be Printed on Excel Sheet
-cons_sectors_print = ['Total Consumption', 'Residential Sector', 'Commercial Sector', 'Industrial Sector',
-                      'Transportation Sector', 'Electric Sector']  # Consumption Sectors to be Printed on Excel Sheet
-
 ########################################################################################################################
 ########################################################################################################################
 ########################################################################################################################
-# All Regions ##########################################################################################################
+# (DO NOT EDIT BEYOND HERE) ############################################################################################
+########################################################################################################################
+########################################################################################################################
+########################################################################################################################
 
 # Full Name All Regions
 all_regions_full = mex_regions_full + canadian_regions_full + nangam_regions_full + row_regions_full
@@ -215,12 +199,8 @@ def create_lookup_dict(param1, param2):
 
 nems_dict = create_lookup_dict(nems_regions_full, nems_regions_acronyms)  # NEMS Full to NEMS Acronyms
 nangam_dict = create_lookup_dict(nangam_regions_full, nangam_regions_acronyms)  # NANGAM Full to NANGAM Acronyms
-price_dict = create_lookup_dict(usa_prod_price_stats, usa_prod_stats_full)  # Price to Stat Full
-stat_dict = create_lookup_dict(usa_prod_stats_full, prod_stats_acronyms)  # Stat Full to Stat Acronyms
-stat_price_dict = create_lookup_dict(usa_prod_price_stats, prod_stats_acronyms)  # Stat Full to Stat Acronyms
 provinces_dict = create_lookup_dict(canadian_provinces_full, canadian_provinces_acronyms)  # Prov Full to Prov Acronyms
 mex_cons_price_dict = create_lookup_dict(cons_sectors, mex_cons_price_raw)  # Cons Price Raw Data to ConsPrice Dict
-mex_cons_dict = create_lookup_dict(mex_cons_sectors, cons_sectors)  # MEX Consumption Sectors to All Consumption Sectors
 print_full_dict = create_lookup_dict(all_regions_acronyms, all_regions_full)  # Acronyms to Full All Regions
 reverse_full_dict = create_lookup_dict(all_regions_full, all_regions_acronyms)  # Full to Acronyms All Regions
 states_dict = create_lookup_dict(usa_states_full, usa_states_acronyms)  # State Full to State Acronyms
