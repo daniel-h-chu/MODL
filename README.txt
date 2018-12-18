@@ -42,9 +42,11 @@ Arrays.py
 	vice versa.
       - Keywords are specific words within excel document that must be correctly supplied in
 	order for the program to read the correct data.
-      - For some field, I wrote (For 'FileName') beside a keyword or array. The keyword is
+      - The phrase (For 'FileName') is written beside some keywords or array. The keyword is
 	to help read data from FileName (Most likely the keyword can be found on the left co
 	lumns)
+      - Canadian provinces form Canadian regions, US States form US Regions, and Mexican cit
+	ies belong to Mexican regions.
 
 Functions.py
       - General functions used throughout the program. This file inherits Arrays.py and is i

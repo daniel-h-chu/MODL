@@ -7,11 +7,11 @@
 # All (Things that can be changed) #####################################################################################
 ########################################################################################################################
 
-# Consumption Sectors (To Be Read from Excel Sheets)
+# Consumption Sectors (To Be Read from Excel Sheets) {All Sectors, Residential, and Electric Power must be included}
 cons_sectors = ['All Sectors', 'Residential', 'Commercial', 'Industrial', 'Transportation', 'Electric Power']
-# Acronyms of Production Stats (To Be Read from Excel Sheets)
+# Acronyms of Production Stats (To Be Read from Excel Sheets) {All three statistics must be included}
 prod_stats_acronyms = ['ONS', 'OFS', 'Total']
-# Years to be calculated (Would recommend years[0] being 2015, 2016, or 2017)
+# Years to be calculated {2015, 2016, or 2017 must be included}
 years = [year for year in range(2015, 2051)]
 
 # Custom Data ##########################################################################################################
@@ -36,7 +36,7 @@ nems_regions_acronyms = ['NES', 'NGC', 'NMC', 'NSW', 'NRM', 'NWC', 'NAH']
 nangam_regions_full = ['Alaska & Hawaii', 'Gulf of Mexico', 'Pacific', 'Mountain', 'West North Central',
                        'East North Central', 'West South Central', 'East South Central', 'Middle Atlantic',
                        'South Atlantic', 'New England']
-# Acronyms of NANGAM regions (For NEMS_TO_NANGAM_)
+# Acronyms of NANGAM regions (For NEMS_TO_NANGAM_) {AHW should be included}
 nangam_regions_acronyms = ['AHW', 'GOM', 'PCF', 'MNT', 'WNC', 'ENC', 'WSC', 'ESC', 'MAT', 'SAT', 'NEN']
 # Full names of US States (For EIA-StatetoStateCapacity)
 usa_states_full = ['Gulf of Mexico', 'Gulf of Mexico - Deepwater', 'Alabama', 'Alaska', 'Arizona', 'Arkansas',
@@ -136,7 +136,11 @@ canada = 'Canada'  # Canada Keyword (For World_total_natural_gas_production_by_r
 # gas_consumption_by_region)
 mexico = 'Mexico'  # Mexico Keyword (For World_total_natural_gas_production_by_region and World_total_natural_
 # gas_consumption_by_region)
+electric_generation = 'Electric Generation'  # Electricity Generation Keyword (For Primary_Energy_Demand)
+from_mexico = 'From Mexico'  # From Mexico Keyword (For Natural_Gas_Imports_and_Exports)
+from_canada = 'From Canada'  # From Canada Keyword (For Natural_Gas_Imports_and_Exports)
 all_sectors = 'All Sectors'  # All Sectors Keyword (For Delivered_energy_consumption_by_end-use_sector_and_fuel)
+total = 'Total'  # Total Keyword (For Natural_Gas_Production)
 region_from = 'Region From'  # Region From Keyword (For mex_pip_cap_bcfd and can_pip_cap)
 region_to = 'Region To'  # Region To Keyword (For mex_pip_cap_bcfd and can_pip_cap)
 state_from = 'State From'  # State From Keyword (For EIA-StatetoStateCapacity)

@@ -25,12 +25,15 @@ def prod_1():
     year_shift = 0
     for row in file_reader:
         if row[0] in Ar.canadian_provinces_full:
+            # Set current province that we are dealing with
             can_prod_raw_province_temp = row[0]
         if Fx.year_sh(row, '_'):
+            # Read in correct data based on year
             year_shift = Fx.year_sh(row, '_')
-        if row[0] == 'Total' and can_prod_raw_province_temp != '':
+        if row[0] == Ar.total and can_prod_raw_province_temp != '':
             for index, element in enumerate(row):
                 if index+Ar.years[0]-year_shift in Ar.years:
+                    # Fill can_prod_raw with raw production data for each canadian province and year
                     Ar.can_prod_raw['ONS'][Ar.provinces_dict[can_prod_raw_province_temp]][
                         index + Ar.years[0] - year_shift] = float(element)
     f_can_prod_csv.close()
@@ -73,10 +76,11 @@ def prod_price_1():
             # Read in correct data based on year
             year_shift = Fx.year_sh(row, '')
         # SPECIAL STATISTIC FOR CANADIAN PRICE
-        if row[0] == "From Canada":
+        if row[0] == Ar.from_canada:
             for index, element in enumerate(row):
                 if index + Ar.years[0] - year_shift in Ar.years:
                     for region in Ar.canadian_regions_acronyms:
+                        # Fill can_prod_price with production price data for each canadian region and year
                         Ar.can_prod_price['ONS'][region][index + Ar.years[0] - year_shift] = float(element)
     f_can_prod_price_csv.close()
 
@@ -86,6 +90,7 @@ def prod_price_1():
 def prod_price_2():
     for region in Ar.canadian_regions_acronyms:
         for year in Ar.years:
+            # Note this is an unweighed average of production price
             Ar.can_prod_price["Total"][region][year] = sum([Ar.can_prod_price[stat][region][year] for stat in
                                                             Ar.prod_stats_acronyms if stat != "Total"]) / sum(
                 [1 for stat
@@ -106,10 +111,12 @@ def cons_1():
     for row in file_reader:
         try:
             if row[0] in Ar.canadian_provinces_full:
+                # Remove commas from numbers
                 Ar.can_pop_ratio_raw[Ar.provinces_dict[row[0]]] = row[-1].replace(",", "")
         except IndexError:
             continue
     for region in Ar.canadian_regions_acronyms:
+        # Determine what ratios that each province have in terms of population in comparison to the entire Canadian pop
         Ar.can_pop_ratio[region] = sum([float(Ar.can_pop_ratio_raw[province]) for province in
                                         Ar.provinces_to_regions[region]]) / sum([float(Ar.can_pop_ratio_raw[province])
                                                                                  for province in
@@ -130,6 +137,7 @@ def cons_2():
     year_shift = 0
     for row in file_reader:
         if row[0] in Ar.cons_sectors:
+            # Set current consumption sector that we are dealing with
             cons_sector_temp = row[0]
         if Fx.year_sh(row, '_'):
             # Read in correct data based on year
@@ -138,6 +146,7 @@ def cons_2():
             for index, element in enumerate(row):
                 if index+Ar.years[0]-year_shift in Ar.years:
                     for region in Ar.canadian_regions_acronyms:
+                        # Set data for canadian consumption based on total consumption and population per region.
                         Ar.can_cons[cons_sector_temp][region][index + Ar.years[0] - year_shift] = float(element) * \
                                                                                                   Ar.can_pop_ratio[
                                                                                                       region]
@@ -157,7 +166,8 @@ def cons_3():
     year_shift = 0
     for row in file_reader:
         # SPECIAL STATISTIC FOR ELECTRICITY
-        if row[0] == 'Electric Generation':
+        if row[0] == Ar.electric_generation:
+            # Set consumption sector only if it is electricity generation
             cons_sector_temp = row[0]
         if Fx.year_sh(row, '_'):
             # Read in correct data based on year
@@ -165,6 +175,7 @@ def cons_3():
         if cons_sector_temp != '' and row[0] == Ar.resource:
             for index, element in enumerate(row):
                 if index + Ar.years[0] - year_shift in Ar.years:
+                    # Fill total canadian consumption energy demand with data for each year
                     Ar.can_cons_eng_dem[index + Ar.years[0] - year_shift] = float(element)
     f_can_eng_dem_csv.close()
     os.remove(Fx.include('Primary_Energy_Demand.csv'))
@@ -182,30 +193,37 @@ def cons_4():
     year_shift = 0
     for row in file_reader:
         if row[0] in Ar.canadian_provinces_full:
+            # Set the current province we are dealing with
             can_cons_province_temp = row[0]
         if Fx.year_sh(row, '_'):
+            # Read in correct data based on year
             year_shift = Fx.year_sh(row, '_')
         if can_cons_province_temp != '' and row[0] == Ar.resource:
             for index, element in enumerate(row):
                 if index+Ar.years[0]-year_shift in Ar.years:
+                    # Fill can_elc_gem_ratio_raw with electricity generation raw data for total generation per province
                     Ar.can_elc_gen_ratio_raw[Ar.provinces_dict[can_cons_province_temp]][
                         index + Ar.years[0] - year_shift] = float(element)
     for region in Ar.canadian_regions_acronyms:
         for year in Ar.years:
             try:
+                # Fill can_elc_gen_ratio with electricity generation as a proportion of total Canadian generation
                 Ar.can_elc_gen_ratio[region][year] = sum(
                     [float(Ar.can_elc_gen_ratio_raw[province][year]) for province in
                      Ar.provinces_to_regions[region]]) / \
                                                      sum([float(Ar.can_elc_gen_ratio_raw[province][year]) for province
                                                           in Ar.canadian_provinces_acronyms])
             except TypeError:
+                # No Data
                 Ar.can_elc_gen_ratio[region][year] = 0
             except ZeroDivisionError:
+                # No Data
                 Ar.can_elc_gen_ratio[region][year] = 0
     for region in Ar.canadian_regions_acronyms:
         for year in Ar.years:
             try:
                 # SPECIAL STATISTIC FOR ELECTRIC POWER
+                # Canadian electricity consumption per region as product of energy demand and electricity generation
                 Ar.can_cons["Electric Power"][region][year] = Ar.can_cons_eng_dem[year] * \
                                                               Ar.can_elc_gen_ratio[region][year]
             except TypeError:
@@ -247,12 +265,16 @@ def cons_price_1():
                 if index+Ar.years[0]-year_shift in Ar.years:
                     # SPECIAL STATISTIC FOR RESIDENTIAL
                     for region in Ar.canadian_regions_acronyms:
+                        # FIll in can_cons_price with consumption price data for all years and regions but only for the
+                        # residential sector (we use residential as the base sector)
                         Ar.can_cons_price['Residential'][region][index + Ar.years[0] - year_shift] = float(element)
     f_can_cons_price_csv.close()
     for cons_sector in [cons_sector for cons_sector in Ar.cons_sectors if cons_sector != 'All Sectors']:
         for can_region in Ar.canadian_regions_acronyms:
             for year in Ar.years:
                 try:
+                    # Fill in can_cons_price with consumption price data for all years and regions based on the ratio of
+                    # consumption price in other sectors to residential sector for select nangam regions as a benchmark
                     Ar.can_cons_price[cons_sector][can_region][year] = Ar.can_cons_price['Residential'][can_region][
                                                                            year] * sum(
                         [Ar.usa_cons_price[cons_sector][nangam_region][year] for nangam_region in
@@ -261,18 +283,6 @@ def cons_price_1():
                                                             in Ar.can_cons_nangam_regions])
                 except TypeError:
                     Ar.can_cons_price[cons_sector][can_region][year] = 0
-    for region in Ar.canadian_regions_acronyms:
-        for year in Ar.years:
-            try:
-                Ar.can_cons_price['All Sectors'][region][year] = sum([Ar.can_cons[cons_sector][region][year] *
-                                                                      Ar.can_cons_price[cons_sector][region][year] for
-                                                                      cons_sector in Ar.cons_sectors if cons_sector !=
-                                                                     'All Sectors']) / \
-                                                                 sum([Ar.can_cons[cons_sector][region][year] for
-                                                                      cons_sector in Ar.cons_sectors if cons_sector !=
-                                                                     'All Sectors'])
-            except ZeroDivisionError:
-                Ar.can_cons_price['All Sectors'][region][year] = 0
 
 
 ########################################################################################################################
@@ -282,6 +292,7 @@ def cons_price_2():
     for region in Ar.canadian_regions_acronyms:
         for year in Ar.years:
             try:
+                # Average consumption price per region weighted by consumption
                 Ar.can_cons_price["All Sectors"][region][year] = sum([Ar.can_cons_price[cons_sector][region][year] *
                                                                       Ar.can_cons[cons_sector][region][year] for
                                                                       cons_sector in Ar.cons_sectors if cons_sector

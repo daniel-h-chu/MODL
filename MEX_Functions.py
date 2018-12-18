@@ -24,6 +24,7 @@ def prod_1():
     year_shift = 0
     for row in file_reader:
         if row[0] in Ar.mex_regions_acronyms:
+            # Set current Mexican region we are dealing with
             mex_prod_region_temp = row[0]
         if Fx.year_sh(row, ''):
             # Read in correct data based on year
@@ -31,6 +32,7 @@ def prod_1():
         if mex_prod_region_temp != '' and row[0] == Ar.production:
             for index, element in enumerate(row):
                 if index+Ar.years[0]-year_shift in Ar.years:
+                    # FIll mex_prod with data for mexican production for each year and region
                     try:
                         Ar.mex_prod['ONS'][mex_prod_region_temp][index + Ar.years[0] - year_shift] = float(element)
                     except TypeError:
@@ -66,10 +68,12 @@ def prod_price_1():
             # Read in correct data based on year
             year_shift = Fx.year_sh(row, '')
         # SPECIAL STATISTIC FOR MEXICAN PRICE
-        if row[0] == "From Mexico":
+        if row[0] == Ar.from_mexico:
             for index, element in enumerate(row):
                 if index + Ar.years[0] - year_shift in Ar.years:
                     for region in Ar.mex_regions_acronyms:
+                        # Fill mex_prod_price with data for Mexican production price read in from the csv for each regio
+                        # n and each year
                         if Ar.mex_prod['ONS'][region][index + Ar.years[0] - year_shift] != 0:
                             Ar.mex_prod_price['ONS'][region][index + Ar.years[0] - year_shift] = float(element)
                         else:
@@ -82,6 +86,7 @@ def prod_price_1():
 def prod_price_2():
     for region in Ar.mex_regions_acronyms:
         for year in Ar.years:
+            # Production price total as an unweighted average of weighted and unweighted production prices
             prod_price_sum = sum([Ar.mex_prod_price[stat][region][year] for stat in Ar.prod_stats_acronyms if stat !=
                                   "Total"])
             if prod_price_sum != 0:
@@ -107,6 +112,7 @@ def cons_1():
     year_shift = 0
     for row in file_reader:
         if row[0] in Ar.mex_regions_acronyms:
+            # Set current Mexican region that we are dealing with
             mex_cons_region_temp = row[0]
         if Fx.year_sh(row, ''):
             # Read in correct data based on year
@@ -114,6 +120,8 @@ def cons_1():
         if mex_cons_region_temp != '' and row[0] in Ar.cons_sectors:
             for index, element in enumerate(row):
                 if index+Ar.years[0]-year_shift in Ar.years:
+                    # Fill mex_cons with Mexican consumption data for each region and year and consumption sector by rea
+                    # ding in data from the CSV file
                     try:
                         Ar.mex_cons[row[0]][mex_cons_region_temp][index + Ar.years[0] - year_shift] = float(element)
                     except TypeError:
@@ -134,6 +142,8 @@ def cons_price_1():
     for cons_sector in Ar.cons_sectors:
         for region in Ar.mex_regions_acronyms:
             for year in Ar.years:
+                # Fill in mex_cons_price with Mexican Consumption Price data for each sector, region, and year based on
+                # the data provided in mex_cons_price_dict
                 try:
                     Ar.mex_cons_price[cons_sector][region][year] = Ar.mex_cons_price_dict[cons_sector]
                 except KeyError:
@@ -147,6 +157,8 @@ def cons_price_2():
     for region in Ar.mex_regions_acronyms:
         for year in Ar.years:
             try:
+                # Mexican Consumption Price for all sectors as average of consumption price for each sector weighted by
+                # sector consumption
                 Ar.mex_cons_price["All Sectors"][region][year] = sum([Ar.mex_cons_price[cons_sector][region][year] *
                                                                       Ar.mex_cons[cons_sector][region][year] for
                                                                       cons_sector in Ar.cons_sectors if
@@ -154,6 +166,7 @@ def cons_price_2():
                     [Ar.mex_cons[cons_sector][region][year] for cons_sector
                      in Ar.cons_sectors if cons_sector != "All Sectors"])
             except ZeroDivisionError:
+                # No consumption data
                 Ar.mex_cons_price["All Sectors"][region][year] = 0
 
 
