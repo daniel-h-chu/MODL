@@ -240,7 +240,7 @@ def write_cap(writer, lines, sheet):
     ws.write_row(len(lines) - 1, 2, [region_full for region_full in Ar.all_regions_full], f1)
     ws.write_row(len(lines), 2, [region_acronym for region_acronym in Ar.all_regions_acronyms], f2)
     for index, region_acronym in enumerate(Ar.all_regions_acronyms):
-        ws.write_column(2 + len(lines), index + 2, [Ar.pip_cap[region_acronym][region_acronym2] for region_acronym2 in
+        ws.write_column(1 + len(lines), index + 2, [Ar.pip_cap[region_acronym][region_acronym2] for region_acronym2 in
                                                     Ar.all_regions_acronyms])
 
 

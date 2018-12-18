@@ -13,7 +13,8 @@ import Arrays as Ar
 # Production ###########################################################################################################
 ########################################################################################################################
 ########################################################################################################################
-# Creates Rest of World Production
+# Reads production for the rest of world from World_total_natural_gas_production_by_region.csv
+#
 def prod_1():
     f_row_prod_csv = open(Fx.include('World_total_natural_gas_production_by_region.csv'), 'r')
     file_reader = csv.reader(f_row_prod_csv, delimiter=',')
