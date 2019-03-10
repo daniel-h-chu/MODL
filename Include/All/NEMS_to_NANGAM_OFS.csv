@@ -1,0 +1,13 @@
+Offshore Ratios,Unnamed: 1,Unnamed: 2,Nems: East,Nems: Gulf Coast,Nems: MidContinent,Nems: South West,Nems: Rocky Mountain,Nems: West Coast,Nems: Alaska & Hawaii
+NANGAM,,,NES,NGC,NMC,NSW,NRM,NWC,NAH
+Alaska & Hawaii,AHW,OFS,0,0,0,0,0,0,0.129870129870129
+Gulf of Mexico,GOM,OFS,0,1,0,1,0,0,0
+Pacific,PCF,OFS,0,0,0,0,0,1,0
+Mountain,MNT,OFS,0,0,0,0,0,0,0
+West North Central,WNC,OFS,0,0,0,0,0,0,0
+East North Central,ENC,OFS,0,0,0,0,0,0,0
+West South Central,WSC,OFS,0,0,0,0,0,0,0
+East South Central,ESC,OFS,0,0,0,0,0,0,0
+Middle Atlantic,MAT,OFS,0,0,0,0,0,0,0
+South Atlantic,SAT,OFS,1,0,0,0,0,0,0
+New England,NEN,OFS,0,0,0,0,0,0,0

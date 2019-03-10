@@ -12,7 +12,7 @@ cons_sectors = ['All Sectors', 'Residential', 'Commercial', 'Industrial', 'Trans
 # Acronyms of Production Stats (To Be Read from Excel Sheets) {All three statistics must be included}
 prod_stats_acronyms = ['ONS', 'OFS', 'Total']
 # Years to be calculated {2015, 2016, or 2017 must be included}
-years = [year for year in range(2015, 2051)]
+years = [year for year in range(2018, 2051)]
 
 # Custom Data ##########################################################################################################
 # See 'Files to Download' on how to enter data to these arrays
@@ -52,6 +52,11 @@ usa_states_acronyms = ['GOM', 'GMD', 'ALB', 'ALS', 'ARZ', 'ARK', 'CAL', 'COL', '
                        'IDH', 'ILN', 'IND', 'IOW', 'KNS', 'KNT', 'LSN', 'MAN', 'MAR', 'MAS', 'MCH', 'MNS', 'MSI', 'MSU',
                        'MON', 'NBR', 'NVD', 'NHM', 'NJS', 'NMX', 'NYK', 'NCL', 'NDK', 'OHO', 'OKL', 'ORG', 'PEN', 'RIL',
                        'SCL', 'SDK', 'TNS', 'TEX', 'UTH', 'VMT', 'VGN', 'WAS', 'WVG', 'WIS', 'WYO']
+# Acronyms of US States (In same order as above) (For EIA-NaturalGasPipelineProjects)
+usa_states_acronyms2 = ['GM', 'GD', 'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FL', 'GA', 'HI', 'ID', 'IL',
+                        'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH',
+                        'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT',
+                        'VA', 'WA', 'WV', 'WI', 'WY']
 # Acronyms of states per NANGAM region (For EIA-StatetoStateCapacity in sorting states into respective NANGAM regions)
 states_to_regions = {
     'AHW': ['ALS', 'HWI'],
@@ -77,6 +82,8 @@ canadian_provinces_full = ['Newfoundland and Labrador', 'Prince Edward Island', 
 # Acronyms of Canadian Provinces (In same order as above) (For Printing)
 canadian_provinces_acronyms = ['NLL', 'PEI', 'NSC', 'NBW', 'QBC', 'ONT', 'MTB', 'ABR', 'BCL', 'SAS', 'YKN', 'NWT', 'NUN'
                                ]
+# Acronyms of Canadian Provinces (2 Characters, same order as above) (For Printing)
+canadian_provinces_acronyms2 = ['NL', 'PE', 'NS', 'NB', 'QC', 'ON', 'MB', 'AB', 'BC', 'SK', 'YT', 'NT', 'NU']
 # Full names of Canadian regions (For printing)
 canadian_regions_full = ['Canada East', 'Canada West']
 # Acronyms of Canadian regions (For Printing)
@@ -110,6 +117,13 @@ row_regions_full = ['Rest of World']
 # Acronyms of Rest of World Regions (For printing and aggregate data)
 row_regions_acronyms = ['ROW']
 
+# Month and State Level Data ###########################################################################################
+
+# List of Months
+months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+# Consumption Sectors (For new_output, in same order as cons_sectors)
+cons_sectors_months = ['Total', 'Residential', 'Commercial', 'Industrial', 'Vehicle', 'Electric']
+
 ########################################################################################################################
 # All (Misc. Consult the Data before Changing) #########################################################################
 ########################################################################################################################
@@ -127,6 +141,7 @@ cons_sectors_print = ['Total Consumption', 'Residential Sector', 'Commercial Sec
 usa_prod_split = 'Supply Prices'  # Statistic Keyword for Price (For Lower_48_Natural_Gas_Production_and_Supply_Prices_)
 resource = "Natural Gas"  # Resource Keyword (For Energy_Consumption_by_Sector_and_Source, Delivered_energy_consumption_
 # by_end-use_sector_and_fuel, Primary_Energy_Demand, End_-_Use_Demand, End_-_Use_Prices, Electricity_Generation)
+price_resource = 'Price of Natural Gas'  # Price Resource Keyword in NG_PRI_SUM_A_EPG0_PCS_DMCF_M and others
 production = "Production"  # Production Keyword (For reg_bal_mex)
 total_world = 'Total World'  # Total World Keyword (For World_total_natural_gas_production_by_region and World_natural_g
 # as_consumption_by_region)
@@ -157,6 +172,12 @@ usa_to_can = 'Pipeline Exports to Canada'  # USA to CAN Pipe Exports (For Natura
 can_to_can = 'Average annual flows (BCF/day)'  # CAN to CAN Pipe Flow (For can_pip_cap)
 imports = 'Imports'  # MEX Imports Keyword (For reg_bal_mex)
 exports = 'Exports'  # MEX Exports Keyword (For reg_bal_mex)
+lng_imports = 'Liquefied Natural Gas Imports'  # Liquid Natural Gas Imports Keyword (Natural_Gas_Imports_and_Exports)
+lng_exports = 'Liquefied Natural Gas Exports'  # Liquid Nstural Gas Exports Keyword (Natural_Gas_Imports_and_Exports)
+completed = 'Completed'  # Status Keyword (For EIA-NAturalGasPipelineProjects)
+last_updated_date = 'Last Updated Date'  # Last Updated Date Keyword (For EIA-NaturalGasPipelineProjects)
+to = 'To'  # State to Keyword (For can-pip-cap)
+frm = 'From'  # State From Keyword (For can-pip-cap)
 
 ########################################################################################################################
 ########################################################################################################################
@@ -171,11 +192,11 @@ all_regions_full = mex_regions_full + canadian_regions_full + nangam_regions_ful
 # Acronyms All Region
 all_regions_acronyms = mex_regions_acronyms + canadian_regions_acronyms + nangam_regions_acronyms + row_regions_acronyms
 
-
 # Create Dictionary Functions ##########################################################################################
 
 # Creates a dictionary based on a list of parameters ex. d = create_dict([nangam_regions_acronyms, years]) allows for
 # access with d['NEN'][2023]
+
 
 def create_dict(params):
     dictionary = dict.fromkeys(params[0])
@@ -204,14 +225,56 @@ def create_lookup_dict(param1, param2):
 nems_dict = create_lookup_dict(nems_regions_full, nems_regions_acronyms)  # NEMS Full to NEMS Acronyms
 nangam_dict = create_lookup_dict(nangam_regions_full, nangam_regions_acronyms)  # NANGAM Full to NANGAM Acronyms
 provinces_dict = create_lookup_dict(canadian_provinces_full, canadian_provinces_acronyms)  # Prov Full to Prov Acronyms
+reverse_provinces_dict = create_lookup_dict(canadian_provinces_acronyms, canadian_provinces_full)  # Prov Acro to Full
 mex_cons_price_dict = create_lookup_dict(cons_sectors, mex_cons_price_raw)  # Cons Price Raw Data to ConsPrice Dict
 print_full_dict = create_lookup_dict(all_regions_acronyms, all_regions_full)  # Acronyms to Full All Regions
 reverse_full_dict = create_lookup_dict(all_regions_full, all_regions_acronyms)  # Full to Acronyms All Regions
 states_dict = create_lookup_dict(usa_states_full, usa_states_acronyms)  # State Full to State Acronyms
+states2_dict = create_lookup_dict(usa_states_acronyms2, usa_states_acronyms)  # State Acronyms 2 Char to State Acronyms
+provinces2_dict = create_lookup_dict(canadian_provinces_acronyms2, canadian_provinces_acronyms)  # Can 2 char to 3 char
 stat_print_dict = create_lookup_dict(prod_stats_acronyms, prod_stats_print)  # Stat Acronym to Stat Printed
 sector_print_dict = create_lookup_dict(cons_sectors, cons_sectors_print)  # Sector Acronym to Sector Printed
 print_dict = stat_print_dict.copy()  # Sector/Stat Acronym to Sector/Stat Printed
 print_dict.update(sector_print_dict)
+cons_month_dict = create_lookup_dict(cons_sectors_months, cons_sectors)  # Consumption Sectors Month Data Dict
+
+# Aggregate Dictionary #################################################################################################
+
+all_dict = create_dict([['Production', 'Production Price', 'Consumption', 'Consumption Price'],
+                        ['Mexico', 'Canada', 'USA', 'ROW', 'Total'], years])  # Aggregate Dictionary
+planned = []
+planned_cols = []
+all_prod = {}  # All Production
+all_cons = {}  # All Consumption
+all_to_states_dict = {mex_region: [mex_region] for mex_region in mex_regions_acronyms + row_regions_acronyms}
+all_to_states_dict.update(states_to_regions)  # All states/provinces/regions
+all_to_states_dict.update(provinces_to_regions)  # All states/provinces/regions
+all_states_dict = {mex_regions_full[index]: mex_regions_acronyms[index] for index in range(len(mex_regions_acronyms))}
+all_states_dict.update({'Rest of World': 'ROW'})
+all_states_dict.update(provinces_dict)
+all_states_dict.update(states_dict)
+
+# Monthify and Statify #################################################################################################
+
+states_full = usa_states_full + mex_regions_full + canadian_provinces_full + row_regions_full  # List of States Full
+states_acronyms = usa_states_acronyms + mex_regions_acronyms + canadian_provinces_acronyms + row_regions_acronyms  # Acr
+states_acronyms2 = usa_states_acronyms2 + mex_regions_acronyms + canadian_provinces_acronyms2 + row_regions_acronyms
+states_acronyms_to_2_dict = create_lookup_dict(states_acronyms, states_acronyms2)  # Lookup dictionary for 2 letter abr
+prod_state_month = create_dict([states_acronyms, range(1, 13)])  # Production State and Month Transform Data
+cons_state_month = create_dict([cons_sectors, states_acronyms, range(1, 13)])  # Consumption State and Month Trans Data
+all_prod_month = create_dict([prod_stats_acronyms, states_acronyms, years, range(1, 13)])  # Production State Month Data
+all_cons_month = create_dict([cons_sectors, states_acronyms, years, range(1, 13)])  # Consumption State and Month Data
+years_months = []  # Monthly Timeline
+for year in years:
+    years_months += [str(month) + '-' + str(year) for month in months]
+all_prod_raw = {}
+all_cons_raw = {}
+usa_cons_price_raw = create_dict([cons_sectors, states_acronyms2, months])  # State by State Consumption Price Data
+all_prod = create_dict([prod_stats_acronyms, states_acronyms2, years_months])  # Production Year + Month Index
+all_cons = create_dict([cons_sectors, states_acronyms2, years_months])  # Consumption Year + Month Index
+all_prod_price = create_dict([prod_stats_acronyms, states_acronyms2, years_months])  # Production Price Year + Month Idx
+all_cons_price = create_dict([cons_sectors, states_acronyms2, years_months])  # Consumption Price Year + Month Index
+print_full_dict_state = {states_acronyms_to_2_dict[all_states_dict[state]]: state for state in list(all_states_dict)}
 
 # United States ########################################################################################################
 
@@ -233,10 +296,12 @@ can_prod_price = create_dict([prod_stats_acronyms, canadian_regions_acronyms, ye
 can_pop_ratio_raw = create_dict([canadian_provinces_acronyms])  # CAN Population Ratio Raw Data
 can_pop_ratio = create_dict([canadian_regions_acronyms])  # CAN Population Ratio
 can_cons = create_dict([cons_sectors, canadian_regions_acronyms, years])  # CAN Consumption
+can_cons_raw = create_dict([cons_sectors, canadian_provinces_full, years])  # CAN Consumption Province Level
 can_cons_eng_dem = create_dict([years])  # CAN Energy Consumption
 can_elc_gen_ratio_raw = create_dict([canadian_provinces_acronyms, years])  # CAN Electricity Generation Raw Data
 can_elc_gen_ratio = create_dict([canadian_regions_acronyms, years])  # CAN Electricity Generation
-can_cons_price = create_dict([cons_sectors, canadian_regions_acronyms, years])  # CAN ConsumptionPrice
+can_cons_price = create_dict([cons_sectors, canadian_regions_acronyms, years])  # CAN Consumption Price
+can_cons_price_raw = create_dict([cons_sectors, canadian_provinces_full, years])  # CAN Consumption Price Prov Lvl
 
 # Mexico ###############################################################################################################
 
@@ -255,12 +320,11 @@ row_cons_price = create_dict([cons_sectors, row_regions_acronyms, years])  # ROW
 
 # Pipe Flow and Capacity ###############################################################################################
 
-pip_cap = create_dict([all_regions_acronyms, all_regions_acronyms])  # Pipe Capacity
-pip_flow = create_dict([all_regions_acronyms, all_regions_acronyms, years])  # Pipe Flow
-mex_to_usa_dict = create_dict([mex_regions_acronyms, nangam_regions_acronyms])  # Mexico to USA Pipe Flow
-usa_to_mex_dict = create_dict([nangam_regions_acronyms, mex_regions_acronyms])  # USA to Mexico Pipe Flow
-
-# Aggregate Dictionary #################################################################################################
-
-all_dict = create_dict([['Production', 'Production Price', 'Consumption', 'Consumption Price'],
-                        ['Mexico', 'Canada', 'USA', 'ROW', 'Total'], years])  # Aggregate Dictionary
+pip_cap = create_dict([states_acronyms2, states_acronyms2])  # Pipe Capacity
+pip_flow_raw = create_dict([all_regions_acronyms, all_regions_acronyms, years])
+pip_flow = create_dict([states_acronyms2, states_acronyms2, years_months])  # Pipe Flow
+pip_flow_state = create_dict([states_acronyms2, states_acronyms2])  # Pipe Flow by State
+mex_to_usa_dict = create_dict([mex_regions_acronyms, usa_states_acronyms2])  # Mexico to USA Pipe Flow
+usa_to_mex_dict = create_dict([usa_states_acronyms2, mex_regions_acronyms])  # USA to Mexico Pipe Flow
+pip_flow_lng = create_dict([states_acronyms2, states_acronyms2, years_months])  # Pipe Flow LNG
+pip_flow_lng_raw = create_dict([states_acronyms2, states_acronyms2])  # LNG Pipe Exports Raw

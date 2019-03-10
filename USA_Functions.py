@@ -22,7 +22,7 @@ def prod_1():
     f_usa_prod_csv = open(Fx.include('Lower_48_Natural_Gas_Production_and_Supply_Prices_by_Supply_Region.csv'), 'r')
     file_reader = csv.reader(f_usa_prod_csv, delimiter=',')
     # Whether we are dealing with onshore or offshore
-    prod_stat_temp = ''
+    prod_stat_temp = '.'
     year_shift = 0
     # Enter data into dictionary by statistic, region, then year
     for row in file_reader:
@@ -35,8 +35,8 @@ def prod_1():
                 if index + Ar.years[0] - year_shift in Ar.years:
                     Ar.usa_prod_raw[prod_stat_temp][Ar.nems_dict[row[0]]][index + Ar.years[0] - year_shift] = \
                         float(element)
-        # Whether we are dealing with onshroe or offshore
-        elif row[0] in Ar.prod_stats_acronyms:
+        # Whether we are dealing with onshore or offshore
+        elif row[0] in Ar.prod_stats_acronyms and prod_stat_temp != '':
             prod_stat_temp = row[0]
         # Stop reading data past this point (Production Price data after this point)
         elif row[0] == Ar.usa_prod_split:
@@ -134,14 +134,19 @@ def prod_price_1():
     # Whether we are dealing with onshore or offshore
     prod_stat_temp = ''
     prod_temp = ''
+    year_shift = 0
     # Enter data into dictionary by statistic, region, then year
     for row in file_reader:
+        if Fx.year_sh(row, ''):
+            # Read in correct data based on year
+            year_shift = Fx.year_sh(row, '')
         if row[0] in Ar.nems_regions_full and prod_stat_temp != '' and prod_temp != '':
             Ar.usa_prod_price_raw[prod_stat_temp][Ar.nems_dict[row[0]]] = dict.fromkeys(Ar.years)
-            for index, element in enumerate(row[4:-1]):
-                if index+2015 in Ar.years:
+            for index, element in enumerate(row):
+                if index + Ar.years[0] - year_shift in Ar.years:
                     # Fill raw price data for each nems region for specific years
-                    Ar.usa_prod_price_raw[prod_stat_temp][Ar.nems_dict[row[0]]][index + 2015] = float(element)
+                    Ar.usa_prod_price_raw[prod_stat_temp][Ar.nems_dict[row[0]]][index + Ar.years[0] - year_shift] = \
+                        float(element)
         # Production Statistic is Onshore or Offshore
         elif row[0] in Ar.prod_stats_acronyms:
             prod_stat_temp = row[0]
@@ -233,9 +238,7 @@ def cons_1():
 
 ########################################################################################################################
 # Gather US Consumption Data for Alaska and Hawaii from Energy_Consumption_by_Sector_and_Source.csv
-# usa_cons stores US Consumption data in a dictionary
-# cons_sector_temp keeps track of the current consumption sector for which data is being entered into
-# year_shift tracks of where the list of years begins in the data file
+# usazt of years begins in the data file
 def cons_2():
     for element, sector in zip(Ar.usa_cons_als, Ar.cons_sectors):
         Ar.usa_cons[sector]["AHW"][Ar.years[0]] = element / 1000000
